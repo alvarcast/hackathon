@@ -2,10 +2,10 @@
 
 include "../../common/php/connect.php";
 
-$usuario = $_POST['usuario'];
-$contrasenia = $_POST['contrasenia'];
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $usuario = $_POST['usuario'];
+    $contrasenia = $_POST['contrasenia'];
 
     $sql = "SELECT IdUsuario FROM usuarios WHERE NombreUsuario = '".$usuario."'";
 
