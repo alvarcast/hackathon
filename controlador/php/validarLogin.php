@@ -2,20 +2,12 @@
 
 include "../../common/php/connect.php";
 
-$conn = new mysqli($servername, $username, $password, $database);
-
-if ($conn->connect_error) {
-  die("Conexión fallida: " . $conn->connect_error);
-}
-
-session_start();
-
 $usuario = $_POST['usuario'];
 $contrasenia = $_POST['contrasenia'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $sql = "SELECT id FROM usuarios WHERE nombres = '".$usuario."'";
+    $sql = "SELECT id FROM usuarios WHERE usuario = '".$usuario."'";
 
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
@@ -23,13 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($result->num_rows == 1){
 
-        $sql = "SELECT id FROM usuarios WHERE teléfono = '".$contrasenia."' AND id = ". $_SESSION['id'];
+        $sql = "SELECT id FROM usuarios WHERE password = '".$contrasenia."' AND id = ". $_SESSION['id'];
         $result = $conn->query($sql);
 
         if($result->num_rows == 1){
 
-            //header("Location: ../../../FrontPage/index.php");
-            echo "Sesión iniciada correctamente";
+            header("Location: ../../vista/php/index.php?control=1");
 
         }else{
 
