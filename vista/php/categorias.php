@@ -6,63 +6,65 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-    include "../../common/php/connect.php";
+    <?php
+        include "../../common/php/connect.php";
     ?>
 
     <h1>Página de selección	de categoría</h1>
     <button id="boton" onclick="location.href='index.php'">Volver al menú</button> <br><br>
 
-    
     <nav>
-        <ul>
-            <li>Categoria 1
-                <ul>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 1</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 2</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 3</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 4</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 5</button></li>
-                </ul>
-            </li>
-            <li>Categoria 2
-                <ul>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 1</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 2</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 3</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 4</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 5</button></li>
-                </ul>
-            </li>
-            <li>Categoria 3
-                <ul>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 1</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 2</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 3</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 4</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 5</button></li>
-                </ul>
-            </li>
-            <li>Categoria 4
-                <ul>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 1</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 2</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 3</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 4</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 5</button></li>
-                </ul>
-            </li>
-            <li>Categoria 5
-                <ul>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 1</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 2</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 3</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 4</button></li>
-                    <li><button id="boton" onclick="location.href='#'">Tipo 5</button></li>
-                </ul>
-            </li>
-        </ul>
+        <button id="boton" onclick="location.href='#categoria1'">Categoria 1</button>
+        <button id="boton" onclick="location.href='#categoria2'">Categoria 2</button>
+        <button id="boton" onclick="location.href='#categoria3'">Categoria 3</button>
+        <button id="boton" onclick="location.href='#categoria4'">Categoria 4</button>
+        <button id="boton" onclick="location.href='#categoria5'">Categoria 5</button>
     </nav>
+
+    <section id="categoria1">
+        <h2>Categoria 1</h2>
+        <button id="boton" onclick="location.href='#'">Tipo 1</button>
+        <button id="boton" onclick="location.href='#'">Tipo 2</button>
+        <button id="boton" onclick="location.href='#'">Tipo 3</button>
+        <button id="boton" onclick="location.href='#'">Tipo 4</button>
+        <button id="boton" onclick="location.href='#'">Tipo 5</button>
+    </section>
+
+    <section id="categoria2">
+        <h2>Categoria 2</h2>
+        <button id="boton" onclick="location.href='#'">Tipo 1</button>
+        <button id="boton" onclick="location.href='#'">Tipo 2</button>
+        <button id="boton" onclick="location.href='#'">Tipo 3</button>
+        <button id="boton" onclick="location.href='#'">Tipo 4</button>
+        <button id="boton" onclick="location.href='#'">Tipo 5</button>
+    </section>
+
+    <section id="categoria3">
+        <h2>Categoria 3</h2>
+        <button id="boton" onclick="location.href='#'">Tipo 1</button>
+        <button id="boton" onclick="location.href='#'">Tipo 2</button>
+        <button id="boton" onclick="location.href='#'">Tipo 3</button>
+        <button id="boton" onclick="location.href='#'">Tipo 4</button>
+        <button id="boton" onclick="location.href='#'">Tipo 5</button>
+    </section>
+
+    <section id="categoria4">
+        <h2>Categoria 4</h2>
+        <button id="boton" onclick="location.href='#'">Tipo 1</button>
+        <button id="boton" onclick="location.href='#'">Tipo 2</button>
+        <button id="boton" onclick="location.href='#'">Tipo 3</button>
+        <button id="boton" onclick="location.href='#'">Tipo 4</button>
+        <button id="boton" onclick="location.href='#'">Tipo 5</button>
+    </section>
+
+    <section id="categoria5">
+        <h2>Categoria 5</h2>
+        <button id="boton" onclick="location.href='#'">Tipo 1</button>
+        <button id="boton" onclick="location.href='#'">Tipo 2</button>
+        <button id="boton" onclick="location.href='#'">Tipo 3</button>
+        <button id="boton" onclick="location.href='#'">Tipo 4</button>
+        <button id="boton" onclick="location.href='#'">Tipo 5</button>
+    </section>
 
 </body>
 </html>
