@@ -13,5 +13,15 @@
 
     <h1>Usuario</h1>
     <button id="boton" onclick="location.href='index.php'">Volver al menú</button>
+
+    <?php
+        include "../../modelo/php/personal/selectUsuario.php";
+    ?>
+
+    <h3>Publicaciones:</h3>
+
+    <?php
+        include "../../modelo/php/personal/selectPublicacionesUsuario.php";
+    ?>
 </body>
 </html>
