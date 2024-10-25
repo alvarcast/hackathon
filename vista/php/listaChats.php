@@ -14,7 +14,7 @@
     <h1>Chats</h1>
     <button id="boton" onclick="location.href='index.php'">Volver al menú</button>
 
-    <h3>Chats:</h3>
+    <h2>Chats:</h2>
 
     <?php
         include "../../modelo/php/global/selectListaChats.php";

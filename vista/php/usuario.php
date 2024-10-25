@@ -18,7 +18,7 @@
         include "../../modelo/php/personal/selectUsuario.php";
     ?>
 
-    <h3>Publicaciones:</h3>
+    <h2>Publicaciones:</h2>
 
     <?php
         include "../../modelo/php/personal/selectPublicacionesUsuario.php";
