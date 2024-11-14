@@ -27,11 +27,15 @@
         }
  
         if(isset($_SESSION['id'])){
-            include "../../modelo/php/global/sesionIniciada.html";
+            include "../html/sesionIniciada.html";
         }else{
-            include "../../modelo/php/global/sesionCerrada.html";      
+            include "../html/sesionCerrada.html";      
         }
+
     ?>
+
+    <br><br>
+    <button id='boton' onclick="location.href='../html/asistencia.html'">Asistencia</button>
     
 </body>
 </html>
