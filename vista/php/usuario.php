@@ -12,7 +12,7 @@
     ?>
 
     <h1>Usuario</h1>
-    <button id="boton" onclick="location.href='index.php'">Volver al menú</button>
+    <button id="boton" onclick="location.href='categorias.php'">Volver atrás</button>
 
     <?php
         include "../../modelo/php/personal/selectUsuario.php";

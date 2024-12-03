@@ -20,11 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($result->num_rows == 1){
 
-            header("Location: ../../vista/php/index.php?control=1");
+            header("Location: ../../vista/php/categorias.php");
 
         }else{
 
-           header("location: ../../vista/php/login.php?control=3");
+            header("location: ../../vista/php/login.php?control=3");
 
         }
 

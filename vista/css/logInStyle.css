@@ -1,0 +1,112 @@
+/* Estilos globales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #F5EED6;
+}
+
+/* Encabezado */
+header {
+    background-color: #B8E3F6;
+    padding: 15px;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 50px;
+}
+
+
+.icons {
+    display: flex;
+    gap: 5px;
+}
+
+.icon {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* Sección de inicio de sesión */
+.login-section {
+    background-color: #B8E3F6;
+    border-radius: 10px;
+    width: 400px;
+    padding: 65px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.login-section h2 {
+    color: #333;
+    margin-bottom: 85px;
+}
+
+.login-section form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+    
+}
+
+.login-section form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 35px;
+    border-radius: 5px;
+    border: 2px solid #000;
+   
+}
+
+.login-section button {
+    background-color: #5BA4C7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 50%;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.login-section .forgot-password {
+    display: block;
+    margin-top: 10px;
+    color: #5BA4C7;
+    text-decoration: none;
+}
+
+.login-section .forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Pie de página */
+footer {
+    background-color: #C7C7C7;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer a {
+    color: black;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+
