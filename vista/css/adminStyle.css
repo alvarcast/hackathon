@@ -1,5 +1,5 @@
 :root {
-    --main-color: #89CFF0;
+    --main-color: #68A8D0;
     --secondary-color: #3EB489;
     --white-color: #EDE8D0;
     --black-color: #000000;
@@ -46,6 +46,35 @@ nav a:hover {
     text-decoration: underline;
 }
 
+.barra {
+    display: flex;
+    padding-top: 2em;
+}
+
+.barra form {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.barra input {
+    width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--main-color);
+    margin-right: 10px;
+}
+
+.barra button {
+    width: 100px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--main-color);
+    color: var(--white-color);
+    cursor: pointer;
+}
+
 .container {
     padding: 20px;
 }
@@ -62,6 +91,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    background-color: beige;
 }
 
 table th, table td {
@@ -100,6 +130,6 @@ table th {
     background-color: var(--main-color);
 }
 
-.button:hover {
+button:hover {
     opacity: 0.8;
 }
