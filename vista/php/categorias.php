@@ -6,12 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        include "../../common/php/connect.php";
-    ?>
+    <?php include "../../common/php/connect.php"; ?>
 
     <h1>Página de selección	de categoría</h1>
-    <button id="boton" onclick="location.href='index.php'">Volver al menú</button> <br><br>
+
+    <button id='boton' onclick="location.href='usuario.php'">Perfil</button>
+    <button id='boton' onclick="location.href='../../common/php/disconnect.php'">Log off</button>
+    <br><br>
+    <button id='boton' onclick="location.href='listaChats.php'">Chats</button>
+    <br><br>
 
     <nav>
         <button id="boton" onclick="location.href='#categoria1'">Categoria 1</button>

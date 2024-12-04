@@ -12,7 +12,7 @@
     ?>
 
     <h1>Chats</h1>
-    <button id="boton" onclick="location.href='index.php'">Volver al menú</button>
+    <button id="boton" onclick="location.href='categorias.php'">Volver atrás</button>
 
     <h2>Chats:</h2>
 
