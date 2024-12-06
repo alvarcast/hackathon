@@ -43,6 +43,7 @@
         <h1 class="nombreUsuario"><?= htmlspecialchars($row['usuario'], ENT_QUOTES, 'UTF-8') ?></h1>
         <div class="icons">
             <!-- Iconos alineados a la derecha -->
+            <a href="../../common/php/disconnect.php"><img src= "../img/logoff.png" alt="logoff"></a>
             <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
             <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes"></a>
             <a href="categorias.php"><img src="../img/caja.png"></a>
