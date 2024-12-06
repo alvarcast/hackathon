@@ -20,6 +20,7 @@ $resultsU = $mysqliresult->fetch_all(MYSQLI_ASSOC);
 $sqlP = "SELECT p.id AS pid, p.descripcion, p.control, u.usuario 
 FROM publicaciones p
 INNER JOIN usuarios u ON u.id = p.id_usuario
+WHERE p.estatus != 'entregado'
 ORDER BY 
   CASE p.control
     WHEN 'pendiente' THEN 1
