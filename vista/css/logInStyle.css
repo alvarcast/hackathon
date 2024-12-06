@@ -3,16 +3,29 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'patrick';
+
+
+}
+  @font-face {
+    font-family: 'patrick';
+    src: url('../fuentes/PatrickHandSC-Regular.ttf');
+
+    
 }
 
+  @font-face {
+    font-family: 'Mulish';
+    src: url("../fuentes/Mulish-VariableFont_wght.ttf" );
+
+}
 body {
-    background-color: #F5EED6;
+    background-color: #fff6e7;
 }
 
 /* Encabezado */
 header {
-    background-color: #B8E3F6;
+    background-color: #2f6a85;
     padding: 15px;
 }
 
@@ -23,35 +36,24 @@ header {
 }
 
 .logo {
-    width: 50px;
+    width: 100px;
 }
 
-
-.icons {
-    display: flex;
-    gap: 5px;
-}
-
-.icon {
-    font-size: 1.5em;
-    cursor: pointer;
-}
 
 /* Sección de inicio de sesión */
 .login-section {
-    background-color: #B8E3F6;
+    background-color: #3f86a7;
     border-radius: 10px;
     width: 400px;
     padding: 65px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 70px;
+    margin: 55px auto;
     text-align: center;
 }
 
 .login-section h2 {
-    color: #333;
-    margin-bottom: 85px;
+    color: white;
+    margin-bottom: 50px;
+    font-size: 2em;
 }
 
 .login-section form label {
@@ -72,7 +74,7 @@ header {
 }
 
 .login-section button {
-    background-color: #5BA4C7;
+    background-color: #316a84;
     color: white;
     border: none;
     border-radius: 5px;
@@ -85,7 +87,7 @@ header {
 .login-section .forgot-password {
     display: block;
     margin-top: 10px;
-    color: #5BA4C7;
+    color: #000000;
     text-decoration: none;
 }
 

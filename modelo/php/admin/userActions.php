@@ -25,6 +25,4 @@ if(isset($_GET["controlUsr"])) {
     }
 }
 
-include "../../../common/php/disconnect.php";
-
 ?>

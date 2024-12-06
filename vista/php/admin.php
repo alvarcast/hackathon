@@ -198,5 +198,3 @@ $resultsC = $mysqliresult->fetch_all(MYSQLI_ASSOC);
     </div>
 </body>
 </html>
-
-<?php include "../../common/php/disconnect.php"; ?>

@@ -18,6 +18,4 @@ if(isset($_GET["controlChat"])) {
     }
 }
 
-include "../../../common/php/disconnect.php";
-
 ?>

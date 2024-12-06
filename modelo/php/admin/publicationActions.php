@@ -28,6 +28,4 @@ if(isset($_GET["controlPub"])) {
     }
 }
 
-include "../../../common/php/disconnect.php";
-
 ?>

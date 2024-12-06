@@ -11,7 +11,7 @@
 
     <header>
         <div class="header-container">
-            <img src="../img/Logo_en_babyblue__3___1_-removebg-preview (1).png" alt="Logo Cirso" class="logo">
+            <img src="../img/logo.png" alt="Logo Cirso" class="logo">
             <div class="icons_header">
             </div>
             
@@ -24,32 +24,39 @@
             if($userControl != null){
                 echo"<br><br>";
                 if($userControl == 2){
-                    echo"<h2 style='text-align: center' style='color: red'>El usuario indicado no existe</h2>";
+                    echo"<h1 style='text-align: center'>El usuario indicado no existe</h1>";
                 }else if($userControl == 3){
-                    echo"<h2 style='text-align: center' style='color: red'>La contraseña es incorrecta</h2>";
+                    echo"<h1 style='text-align: center'>La contraseña para ese usuario es incorrecta</h1>";
+                }else if($userControl == 4){
+                    echo"<h1 style='text-align: center'>Su usuario ha sido deshabilitado, póngase en contacto con el soporte</h1>";
                 }
-                echo"<br><br>";
             }
         } else {
             echo"<br><br>";
         }
     ?>
 
-    <section class="login-section">
-        <h1>Iniciar Sesión</h1>
+    <main>
+        <section class="login-section">
+            <h2>Iniciar Sesión</h2>
+            <form action="../../controlador/php/validarLogin.php" method="post">
+              
+                <input type="text"  placeholder="Usuario"   id="usuario" name="usuario" required>
+                
+                <input type="password" placeholder="Contraseña"  id="contrasenia" name="contrasenia" required>
+                
+                <button type="submit">Iniciar sesión</button>
+                
+                <a href="../html/soporte.html" class="forgot-password">Olvidé mi contraseña</a>
+            </form>
+        </section>
+    </main>
 
-        <form action="../../controlador/php/validarLogin.php" method="post">
-            <label for="usuario">Usuario:</label><br>
-            <input type="text" placeholder="..." id="usuario" name="usuario" required>
-                
-            <label for="contrasenia">Contraseña:</label><br>
-            <input type="password" placeholder="..." id="contrasenia" name="contrasenia" required>
-                
-            <button type="submit">Iniciar sesión</button>
-                
-            <a href="#" class="forgot-password">Olvidé mi contraseña</a>
-        </form>
-    </section>
+    <footer>
+        <a href="#politicas-privacidad">Políticas privacidad</a>
+        <a href="#politicas-cookies">Políticas de cookies</a>
+        <a href="#terminos">Términos y condiciones</a>
+    </footer>
 
 </body>
 </html>

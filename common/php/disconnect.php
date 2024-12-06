@@ -1,13 +1,16 @@
 <?php
-
-/*
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
+// Start the session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
-*/
 
-session_destroy();
+// Check if the session exists before trying to destroy it
+if (isset($_SESSION)) {
+    session_destroy(); // Destroy the session
+    session_unset();   // Clear session variables
+}
+
+// Redirect or display a message after session destruction
+header("Location: ../../vista/php/index.php");
+exit;
+?>

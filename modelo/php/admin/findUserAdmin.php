@@ -82,5 +82,3 @@ if(empty($results)){
     </div>
 
 <?php endforeach; ?>
-
-<?php include "../../../common/php/disconnect.php"; ?>

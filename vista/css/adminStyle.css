@@ -1,12 +1,23 @@
 :root {
-    --main-color: #68A8D0;
+    --main-color: #2f6a85;
     --secondary-color: #3EB489;
-    --white-color: #EDE8D0;
+    --white-color: #fff6e7;
     --black-color: #000000;
 }
 
+@font-face {
+    font-family: 'patrik';
+    src: url('../fuentes/PatrickHandSC-Regular.ttf');
+
+    
+}
+@font-face {
+    font-family:'mulish' ;
+    src: url('../fuentes/Mulish-VariableFont_wght.ttf');
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'mulish';
     background-color: var(--white-color);
     color: var(--black-color);
     margin: 0;
@@ -15,7 +26,7 @@ body {
 
 header {
     background-color: var(--main-color);
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     color: var(--white-color);
     display: flex;

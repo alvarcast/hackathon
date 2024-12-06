@@ -1,27 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cirso - Perfil de Usuario</title>
+    <link rel="stylesheet" href="../css/usuarioStyle.css">
+    <link rel="icon" href="../img/logo.png">
 </head>
 <body>
-    
+
     <?php
         include "../../common/php/connect.php";
     ?>
 
-    <h1>Usuario</h1>
-    <button id="boton" onclick="location.href='categorias.php'">Volver atrás</button>
-
     <?php
-        include "../../modelo/php/personal/selectUsuario.php";
+        $sql = "SELECT id,
+        usuario,
+        telefono,
+        email,
+        estatus
+        FROM usuarios
+        WHERE id = ".$_SESSION['id'];
+
+        $result = $conn->query($sql);
+        
+        $row = $result->fetch_assoc();
+
+        $countPublicaciones = 1;
+
+        $sql = "SELECT descripcion
+        FROM publicaciones
+        WHERE id_usuario = ". $_SESSION['id'];
+
+        $mysqliresult = $conn->query($sql);
+        $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
     ?>
 
-    <h2>Publicaciones:</h2>
+    <header class="top-bar">
+        <div class="logo">
+            <img src="../img/logo.png" alt="Logo" id="logo">
+        </div>
+        <h1 class="nombreUsuario"><?= htmlspecialchars($row['usuario'], ENT_QUOTES, 'UTF-8') ?></h1>
+        <div class="icons">
+            <!-- Iconos alineados a la derecha -->
+            <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
+            <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes"></a>
+            <a href="categorias.php"><img src="../img/caja.png"></a>
+        </div>
+    </header>
 
-    <?php
-        include "../../modelo/php/personal/selectPublicacionesUsuario.php";
-    ?>
+    <div class="container">
+        <!-- Información de perfil -->
+        <div class="profile-info">
+            <div>
+                <p>Teléfono: <?= htmlspecialchars($row['telefono'], ENT_QUOTES, 'UTF-8') ?></p>
+                <p>E-Mail: <?= htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') ?></p>
+                <p>Estatus: <?= htmlspecialchars($row['estatus'], ENT_QUOTES, 'UTF-8') ?></p>
+            </div>
+            <div>
+                <h2>Añada un producto</h2>
+                <a href="../html/soporte.html" class="linkNormas"><p>Normas de uso</p></a>
+                <!--Link de las normas-->
+            </div>
+            <div>
+                <a href="../addArticulo/addArticulo.html"><button class="btn-add-product">+</button></a>
+            </div>
+        </div>
+
+        <!-- Lista de productos -->
+        <div class="product-list">
+            <h3>Mis productos</h3>
+
+            <?php foreach ($results as $item):?>
+
+                <div class="product-item">
+                    <div class="product-info">
+                        <img src="../img/jersey.png" class="img" alt="Producto A">
+                        <div class="product-details">
+                            <h3>Producto <?= htmlspecialchars($countPublicaciones, ENT_QUOTES, 'UTF-8') ?>:</h3>
+                            <p><?= htmlspecialchars($item['descripcion'], ENT_QUOTES, 'UTF-8') ?></p>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="editarBtn">Editar</button>
+                        <button class="eliminarBtn">Eliminar</button>
+                    </div>
+                </div>
+
+                <?php $countPublicaciones = $countPublicaciones + 1 ?>
+
+            <?php endforeach; ?>
+
+        </div>
+    </div><br><br>
+
+    <footer>
+        <a href="#politicas-privacidad">Políticas privacidad</a>
+        <a href="#politicas-cookies">Políticas de cookies</a>
+        <a href="#configuracion-cookies">Configuración de cookies</a>
+        <a href="#terminos">Términos y condiciones</a>
+    </footer>
+
 </body>
 </html>
+
