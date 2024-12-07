@@ -7,21 +7,22 @@ if(isset($_GET["controlUsr"])) {
     $usuario = $_GET['usuario'];
     if($userControl != null){
         if($userControl == 1){
-            // Abrir chat
+            // Abrir chat con el usuario
         }else if($userControl == 2){
             $sql = "UPDATE usuarios
             SET password = NULL, estatus= 'SUSPENDIDO'
             WHERE usuario = '".$usuario."';";
 
             $mysqliresult = $conn->query($sql);
+            header("Location: ../../../vista/php/admin.php#manage-users");
         }else if($userControl == 3){
             $sql = "UPDATE usuarios
             SET password = 'p123456789', estatus= 'ACTIVO'
             WHERE usuario = '".$usuario."';";
 
             $mysqliresult = $conn->query($sql);
+            header("Location: ../../../vista/php/admin.php#manage-users");
         }
-        header("Location: ../../../vista/php/admin.php#manage-users");
     }
 }
 

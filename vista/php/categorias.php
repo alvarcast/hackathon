@@ -8,6 +8,23 @@
     <link rel="icon" href="../img/logo sin nombre.png" type="image/x-icon">
 </head>
 <body>
+
+    <?php
+        include "../../common/php/connect.php";
+
+        $countPublicaciones = 1;
+    
+        $sql = "SELECT p.id,
+        nombre,
+        id_imagenes
+        FROM publicaciones p
+        INNER JOIN items i ON p.id_item = i.id
+        WHERE control = 'aprobado' AND estatus = 'publicado'";
+
+        $mysqliresult = $conn->query($sql);
+        $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+    ?>
+
     <!-- Barra superior -->
     <header class="top-bar">
         <div class="logo">
@@ -89,54 +106,16 @@
 
         <!-- Productos -->
         <section class="products">
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 1"></a>
-                <p>Producto 1<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 2"></a>
-                <p>Producto 2<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 3"></a>
-                <p>Producto 3<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 4"></a>
-                <p>Producto 4<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 5"></a>
-                <p>Producto 5<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 6"></a>
-                <p>Producto 6<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 7"></a>
-                <p>Producto 7<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 8"></a>
-                <p>Producto 8<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 9"></a>
-                <p>Producto 9<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 10"></a>
-                <p>Producto 10<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 11"></a>
-                <p>Producto 11<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
-            <div class="product">
-                <a href="producto.php"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto 12"></a>
-                <p>Producto 12<a href="../mensajes/mensajes.html">📤</a></p>
-            </div>
+            <?php foreach ($results as $item):?>
+
+                <div class="product">
+                    <a href="producto.php?pid=<?php echo $item['id']; ?>"><img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto <?= htmlspecialchars($countPublicaciones, ENT_QUOTES, 'UTF-8') ?>"></a>
+                    <p><?= htmlspecialchars($item['nombre'], ENT_QUOTES, 'UTF-8') ?><a href="../mensajes/mensajes.html">📤</a></p>
+                </div>
+
+                <?php $countPublicaciones = $countPublicaciones + 1 ?>
+
+            <?php endforeach; ?>
         </section>
     </div>
     <br><br>

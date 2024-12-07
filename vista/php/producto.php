@@ -8,6 +8,31 @@
     <link rel="icon" href="../img/logo sin nombre.png" type="image/x-icon">
 </head>
 <body>
+
+    <?php
+        include "../../common/php/connect.php";
+
+        if(isset($_GET["pid"])) { 
+            $pid = $_GET['pid'];
+        }
+    
+        $sql = "SELECT id_usuario,
+        i.nombre AS nombre_item,
+        id_imagenes,
+        descripcion,
+        edad,
+        estado_fisico,
+        c.nombre AS nombre_categoria
+        FROM publicaciones p
+        INNER JOIN items i ON p.id_item = i.id
+        inner join categorias c ON c.id = i.id_categoria
+        WHERE p.id = ".$pid;
+
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+
+    ?>
+
     <header class="header">
         
         <div class="logo">
@@ -42,12 +67,12 @@
                     <img src="../img/jersey.png" alt="item">
                 </div>
                 <div class="product-details">
-                    <h3>Jersey de manga larga negra</h3>
-                    <p>Jersey - niño</p>
-                    <p>3 años</p>
-                    <p><strong>Estado:</strong> Seminuevo/Nuevo</p>
-                    <p><strong>Por ubicación:</strong></p>
-                    <p>Este artículo será enviado en 3 días</p>
+                    <h3><?= htmlspecialchars($row['nombre_item'], ENT_QUOTES, 'UTF-8') ?></h3>
+                    <p><strong>Descripción:</strong> <?= htmlspecialchars($row['descripcion'], ENT_QUOTES, 'UTF-8') ?></p>
+                    <p><strong>Edad:</strong> <?= htmlspecialchars($row['edad'], ENT_QUOTES, 'UTF-8') ?></p>
+                    <p><strong>Estado:</strong> <?= htmlspecialchars($row['estado_fisico'], ENT_QUOTES, 'UTF-8') ?></p>
+                    <p><strong>Categoría:</strong> <?= htmlspecialchars($row['nombre_categoria'], ENT_QUOTES, 'UTF-8') ?></p>
+                    <p></p>
                 </div>
             </div>
         </section>

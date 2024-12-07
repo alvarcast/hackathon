@@ -7,14 +7,14 @@ if(isset($_GET["controlChat"])) {
     $cid = $_GET['cid'];
     if($chatcontrol != null){
         if($chatcontrol == 1){
-            // Abrir chat
+            header("Location: ../../../vista/php/chat.php?cid=$cid");
         }else if($chatcontrol == 2){
             $sql = "DELETE FROM chats
             WHERE id = '".$cid."';";
 
             $mysqliresult = $conn->query($sql);
+            header("Location: ../../../vista/php/admin.php#manage-chats");
         }
-        header("Location: ../../../vista/php/admin.php#manage-chats");
     }
 }
 

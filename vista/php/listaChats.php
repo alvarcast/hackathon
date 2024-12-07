@@ -8,6 +8,22 @@
   <link rel="icon" href="../img/logo sin nombre.png" type="image/x-icon">
 </head>
 <body>
+
+  <?php
+    include "../../common/php/connect.php";
+
+    $whereClause = "id_usuario_solicita = " . $_SESSION['id'] . " OR id_usuario_pub = " . $_SESSION['id'];
+    $chatCount = 1;
+
+    $sql = "SELECT id,
+    id_publicacion
+    FROM chats
+    WHERE " . $whereClause;
+
+    $mysqliresult = $conn->query($sql);
+    $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+  ?>
+
   <header>
     <div class="top-bar">
       <img src="../img/logo.png" alt="Cirso Logo" class="logo">
@@ -24,6 +40,7 @@
     <div class="mensajes">
       <h4>Mensajes</h4>
       <div class="mensaje">
+        <!-- No puedo establecer el nombre del usuario sin estar asignado un mensaje a este -->
         <h4>NOMBRE_CONTACTO</h4>
         <p>mensaje mas reciente </p>
       </div>
@@ -34,18 +51,27 @@
       <div class="message-box">
         <h2><a href="#">Tus mensajes</a></h2>
       </div>
+
       <div class="no-messages">
-        <i class="message-envelope">✉️</i>
-        <p>NO TIENES NINGÚN MENSAJE</p>
-        <p>Cuando alguien te envíe algún mensaje aparecerá aquí</p>
-        <br><br>
         <?php
-        include "../../common/php/connect.php";
+          if($mysqliresult->num_rows == 0){
+            echo "<i class='message-envelope'>✉️</i>";
+            echo "<p>NO TIENES NINGÚN MENSAJE</p>";
+            echo "<p>Cuando alguien te envíe algún mensaje aparecerá aquí</p>";
+          }
         ?>
 
-        <?php
-            include "../../modelo/php/global/selectListaChats.php";
-        ?>
+        <?php foreach ($results as $item):?>
+
+          <h3>Chat <?= htmlspecialchars($chatCount, ENT_QUOTES, 'UTF-8') ?></h3>
+          <p>ID Chat: <?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?></p>
+          <p>ID Publicación del chat: <?= htmlspecialchars($item['id_publicacion'], ENT_QUOTES, 'UTF-8') ?></p>
+
+          <a href="chat.php?cid=<?php echo $item['id']; ?>">Abrir</a>
+
+          <?php $chatCount = $chatCount + 1 ?>
+
+        <?php endforeach; ?>
       </div>
     </main>
   </div>

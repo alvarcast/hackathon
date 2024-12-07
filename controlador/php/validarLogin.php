@@ -7,12 +7,14 @@ $contrasenia = $_POST['contrasenia'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $sql = "SELECT id, estatus FROM usuarios WHERE usuario = '".$usuario."'";
+    $sql = "SELECT id, estatus, id_tipo FROM usuarios WHERE usuario = '".$usuario."'";
     $result = $conn->query($sql);
 
     $row = $result->fetch_assoc();
     $_SESSION['id'] = $row['id'];
+
     $estatus = $row['estatus'];
+    $id_tipo = $row['id_tipo'];
 
     if($result->num_rows == 1){
 
@@ -29,8 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = $conn->query($sql);
     
             if($result->num_rows == 1){
-    
-                header("Location: ../../vista/php/categorias.php");
+
+                if ($id_tipo == 1){
+                    header("location: ../../vista/php/admin.php");
+                } else {
+                    header("Location: ../../vista/php/categorias.php");
+                }
     
             }else{
     
