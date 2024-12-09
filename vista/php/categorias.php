@@ -5,24 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cirso - Productos</title>
     <link rel="stylesheet" href="../css/categoriasStyle.css">
-    <link rel="icon" href="../img/logo sin nombre.png" type="image/x-icon">
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 <body>
 
     <?php
         include "../../common/php/connect.php";
 
-        $countPublicaciones = 1;
+        if (isset($_SESSION['id'])){
+      
+            $countPublicaciones = 1;
     
-        $sql = "SELECT p.id,
-        nombre,
-        id_imagenes
-        FROM publicaciones p
-        INNER JOIN items i ON p.id_item = i.id
-        WHERE control = 'aprobado' AND estatus = 'publicado'";
+            $sql = "SELECT p.id,
+            nombre,
+            id_imagenes
+            FROM publicaciones p
+            INNER JOIN items i ON p.id_item = i.id
+            WHERE control = 'aprobado' AND estatus = 'publicado'";
+    
+            $mysqliresult = $conn->query($sql);
+            $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+      
+        } else {
+            header("Location: login.php");
+        }
 
-        $mysqliresult = $conn->query($sql);
-        $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
     ?>
 
     <!-- Barra superior -->

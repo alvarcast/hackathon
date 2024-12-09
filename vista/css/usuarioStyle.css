@@ -21,6 +21,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 5em;
 }
 .logo {
     display: flex;
@@ -36,8 +37,8 @@ h1 {
 }
 .nombreUsuario{
     font-family: 'patrick';
-    margin-right: 7%;
     color: #fff6e7;
+    margin: 0;
 }
 
 .search-bar {
@@ -64,12 +65,6 @@ h1 {
 .logo {
     display: flex;
     align-items: center;
-}
-
-
-
-.nombreUsuario {
-    margin-left: 2%;
 }
 
 /* Contenedor principal */
@@ -161,7 +156,8 @@ h1 {
 
 /* Botón para añadir un producto */
 .btn-add-product {
-    padding: 15px 15px;
+    height: 2em;
+    width: 2em;
     background-color: #5BA4C7;
     color: white;
     border: none;

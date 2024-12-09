@@ -5,23 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cirso - Mensajes</title>
   <link rel="stylesheet" href="../css/listaChatsStyle.css">
-  <link rel="icon" href="../img/logo sin nombre.png" type="image/x-icon">
+  <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 <body>
 
   <?php
     include "../../common/php/connect.php";
 
-    $whereClause = "id_usuario_solicita = " . $_SESSION['id'] . " OR id_usuario_pub = " . $_SESSION['id'];
-    $chatCount = 1;
+    if (isset($_SESSION['id'])){
 
-    $sql = "SELECT id,
-    id_publicacion
-    FROM chats
-    WHERE " . $whereClause;
+      $whereClause = "id_usuario_solicita = " . $_SESSION['id'] . " OR id_usuario_pub = " . $_SESSION['id'];
+      $chatCount = 1;
+  
+      $sql = "SELECT id,
+      id_publicacion
+      FROM chats
+      WHERE " . $whereClause;
+  
+      $mysqliresult = $conn->query($sql);
+      $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
 
-    $mysqliresult = $conn->query($sql);
-    $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+    } else {
+      header("Location: login.php");
+    }
+
   ?>
 
   <header>

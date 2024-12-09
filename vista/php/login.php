@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/logInStyle.css">
-    <link rel="icon" href="../img/logo sin nombre.png" type="image/x-icon">
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
     <title>Log In</title>
 </head>
 <body>
 
     <header>
-        <div class="header-container">
-            <img src="../img/logo.png" alt="Logo Cirso" class="logo">
-            <div class="icons_header">
-            </div>
-            
-        </div>
+        <img src="../img/logo.png" alt="Logo Cirso" class="logo">
     </header>
 
     <?php

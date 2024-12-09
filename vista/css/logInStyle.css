@@ -27,12 +27,10 @@ body {
 header {
     background-color: #2f6a85;
     padding: 15px;
-}
-
-.header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 6.9em;
 }
 
 .logo {

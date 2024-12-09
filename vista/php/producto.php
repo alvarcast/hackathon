@@ -5,31 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CIRSO - Tus Productos </title>
     <link rel="stylesheet" href="../css/productoStyle.css">
-    <link rel="icon" href="../img/logo sin nombre.png" type="image/x-icon">
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 <body>
 
     <?php
         include "../../common/php/connect.php";
 
-        if(isset($_GET["pid"])) { 
-            $pid = $_GET['pid'];
-        }
-    
-        $sql = "SELECT id_usuario,
-        i.nombre AS nombre_item,
-        id_imagenes,
-        descripcion,
-        edad,
-        estado_fisico,
-        c.nombre AS nombre_categoria
-        FROM publicaciones p
-        INNER JOIN items i ON p.id_item = i.id
-        inner join categorias c ON c.id = i.id_categoria
-        WHERE p.id = ".$pid;
+        if (isset($_SESSION['id'])){
 
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
+            if(isset($_GET["pid"])) { 
+                $pid = $_GET['pid'];
+            }
+        
+            $sql = "SELECT id_usuario,
+            i.nombre AS nombre_item,
+            id_imagenes,
+            descripcion,
+            edad,
+            estado_fisico,
+            c.nombre AS nombre_categoria
+            FROM publicaciones p
+            INNER JOIN items i ON p.id_item = i.id
+            inner join categorias c ON c.id = i.id_categoria
+            WHERE p.id = ".$pid;
+    
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+
+        } else {
+            header("Location: login.php");
+        }
 
     ?>
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cirso - Landing Page</title>
     <link rel="stylesheet" href="../css/indexStyle.css">
-    <link rel="icon" href="../img/logo sin nombre.png" type="image/x-icon">
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 <body>
 

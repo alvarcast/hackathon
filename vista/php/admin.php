@@ -5,46 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 
 <?php 
 
-include "../../common/php/connect.php"; 
+    include "../../common/php/connect.php"; 
 
-$sqlU = "SELECT usuario, email, estatus FROM usuarios
-ORDER BY id ASC";
+    if (isset($_SESSION['id'])){
+        $id = $_SESSION['id'];
 
-$mysqliresult = $conn->query($sqlU);
-$resultsU = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+        $sql = "SELECT id_tipo FROM usuarios
+        WHERE id = $id";
 
-$sqlP = "SELECT p.id AS pid, p.descripcion, p.control, u.usuario 
-FROM publicaciones p
-INNER JOIN usuarios u ON u.id = p.id_usuario
-ORDER BY 
-  CASE p.control
-    WHEN 'pendiente' THEN 1
-    WHEN 'rechazado' THEN 2
-    WHEN 'aprobado' THEN 3
-END ASC";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
 
-$mysqliresult = $conn->query($sqlP);
-$resultsP = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+        if($row['id_tipo'] != 1){
+            header("Location: ../../common/php/disconnect.php");
+        }
 
-$sqlC = "SELECT c.id as cid, u1.usuario AS publisher, u2.usuario AS requester, descripcion
-FROM chats c
-INNER JOIN usuarios u1 ON u1.id = c.id_usuario_pub
-INNER JOIN usuarios u2 ON u2.id = c.id_usuario_solicita
-INNER JOIN publicaciones p ON p.id = c.id_publicacion
-ORDER BY c.id ASC";
-
-$mysqliresult = $conn->query($sqlC);
-$resultsC = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+        $sqlU = "SELECT usuario, email, estatus FROM usuarios
+        ORDER BY id ASC";
+    
+        $mysqliresult = $conn->query($sqlU);
+        $resultsU = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+    
+        $sqlP = "SELECT p.id AS pid, p.descripcion, p.control, u.usuario 
+        FROM publicaciones p
+        INNER JOIN usuarios u ON u.id = p.id_usuario
+        ORDER BY 
+        CASE p.control
+            WHEN 'pendiente' THEN 1
+            WHEN 'rechazado' THEN 2
+            WHEN 'aprobado' THEN 3
+        END ASC";
+    
+        $mysqliresult = $conn->query($sqlP);
+        $resultsP = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+    
+        $sqlC = "SELECT c.id as cid, u1.usuario AS publisher, u2.usuario AS requester, descripcion
+        FROM chats c
+        INNER JOIN usuarios u1 ON u1.id = c.id_usuario_pub
+        INNER JOIN usuarios u2 ON u2.id = c.id_usuario_solicita
+        INNER JOIN publicaciones p ON p.id = c.id_publicacion
+        ORDER BY c.id ASC";
+    
+        $mysqliresult = $conn->query($sqlC);
+        $resultsC = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+    
+    } else {
+        header("Location: login.php");
+    }
 
 ?>
 
 <body>
     <header>
-        <img src="../img/Logo_en_babyblue__3___1_-removebg-preview (1).png" alt="Admin Logo">
         <h1>Panel de Administrador</h1>
     </header>
     <nav>

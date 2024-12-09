@@ -11,35 +11,42 @@
 
     <?php
         include "../../common/php/connect.php";
+
+        if (isset($_SESSION['id'])){
+            
+            $sql = "SELECT u.id,
+            usuario,
+            telefono,
+            email,
+            Tipo_via,
+            Nombre_via,
+            Nro,
+            piso,
+            esc,
+            puerta,
+            cod_postal,
+            localidad,
+            provincia
+            FROM usuarios u
+            INNER JOIN direcciones d ON u.id_dir = d.id
+            WHERE u.id = ".$_SESSION['id'];
     
-        $sql = "SELECT u.id,
-        usuario,
-        telefono,
-        email,
-        Tipo_via,
-        Nombre_via,
-        Nro,
-        piso,
-        esc,
-        puerta,
-        cod_postal,
-        localidad,
-        provincia
-        FROM usuarios u
-        INNER JOIN direcciones d ON u.id_dir = d.id
-        WHERE u.id = ".$_SESSION['id'];
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+    
+            $sql = "SELECT descripcion,
+            nombre
+            FROM publicaciones p
+            INNER JOIN items i ON p.id_item = i.id
+            WHERE id_usuario = ". $_SESSION['id'];
+    
+            $mysqliresult = $conn->query($sql);
+            $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
 
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-
-        $sql = "SELECT descripcion,
-        nombre
-        FROM publicaciones p
-        INNER JOIN items i ON p.id_item = i.id
-        WHERE id_usuario = ". $_SESSION['id'];
-
-        $mysqliresult = $conn->query($sql);
-        $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+        } else {
+            header("Location: login.php");
+        }
+    
     ?>
 
     <header class="top-bar">
