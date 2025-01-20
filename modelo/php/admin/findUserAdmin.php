@@ -13,6 +13,8 @@ WHERE usuario LIKE '%".$usuario."%'";
 $mysqliresult = $conn->query($sql);
 $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
 
+$conn->close();
+
 ?>
 
 <link rel="stylesheet" href="../../../vista/css/adminStyle.css">

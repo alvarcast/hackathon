@@ -114,15 +114,14 @@
         </div><br>
     </div>
     
-    
-    
-    
-    <div class="additional-images">
-        <img src="../img/jersey.png" alt="Imagen 1">
-        <img src="../img/jersey.png" alt="Imagen 2">
-        <img src="../img/jersey.png" alt="Imagen 3">
-        <img src="../img/jersey.png" alt="Imagen 4">
-    </div>
+    <!--
+        <div class="additional-images">
+            <img src="../img/jersey.png" alt="Imagen 1">
+            <img src="../img/jersey.png" alt="Imagen 2">
+            <img src="../img/jersey.png" alt="Imagen 3">
+            <img src="../img/jersey.png" alt="Imagen 4">
+        </div>
+    -->
 
     <div class="info">
         <div class="info-logos">

@@ -120,9 +120,10 @@ table th {
     padding: 8px 12px;
     margin: 5px;
     border: none;
-    border-radius: 4px;
+    border-radius: 4px; 
     color: var(--white-color);
     cursor: pointer;
+    width: 7em;
 }
 
 .ban, .delete {

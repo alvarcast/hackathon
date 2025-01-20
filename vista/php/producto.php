@@ -23,6 +23,7 @@
             id_imagenes,
             descripcion,
             edad,
+            zona,
             estado_fisico,
             c.nombre AS nombre_categoria
             FROM publicaciones p
@@ -32,6 +33,8 @@
     
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
+
+            $oid = $row['id_usuario'];
 
         } else {
             header("Location: login.php");
@@ -77,6 +80,7 @@
                     <p><strong>Descripción:</strong> <?= htmlspecialchars($row['descripcion'], ENT_QUOTES, 'UTF-8') ?></p>
                     <p><strong>Edad:</strong> <?= htmlspecialchars($row['edad'], ENT_QUOTES, 'UTF-8') ?></p>
                     <p><strong>Estado:</strong> <?= htmlspecialchars($row['estado_fisico'], ENT_QUOTES, 'UTF-8') ?></p>
+                    <p><strong>Zona:</strong> <?= htmlspecialchars($row['zona'], ENT_QUOTES, 'UTF-8') ?></p>
                     <p><strong>Categoría:</strong> <?= htmlspecialchars($row['nombre_categoria'], ENT_QUOTES, 'UTF-8') ?></p>
                     <p></p>
                 </div>
@@ -85,7 +89,11 @@
 
         <aside class="product-summary">
             <h3>Resumen del producto</h3>
-            <button class="btn">Solicitar</button>
+            <form method="GET" action="../../controlador/php/openChat.php">
+                <input type="hidden" name="oid" value="<?= $oid ?>">
+                <input type="hidden" name="pid" value="<?= $pid ?>">
+                <button class="btn">Solicitar</button>
+            </form>
         </aside>   
     </main>
     <footer>

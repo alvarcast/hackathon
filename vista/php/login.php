@@ -10,7 +10,7 @@
 <body>
 
     <header>
-        <img src="../img/logo.png" alt="Logo Cirso" class="logo">
+        <a href="index.php"><img src="../img/logo.png" alt="Logo Cirso" class="logo"></a>
     </header>
 
     <?php
@@ -29,6 +29,8 @@
         } else {
             echo"<br><br>";
         }
+
+        
     ?>
 
     <main>

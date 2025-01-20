@@ -70,17 +70,19 @@
                 <h2>Información personal</h2>
                 <p>Teléfono: <?= htmlspecialchars($row['telefono'], ENT_QUOTES, 'UTF-8') ?></p>
                 <p>E-Mail: <?= htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') ?></p>
-                <p>
-                    Dirección: 
-                    <?= htmlspecialchars($row['Tipo_via'], ENT_QUOTES, 'UTF-8') ?>
-                    <?= htmlspecialchars($row['Nombre_via'], ENT_QUOTES, 'UTF-8') ?>
-                    <?= htmlspecialchars($row['Nro'], ENT_QUOTES, 'UTF-8') ?>,
-                    escalera <?= htmlspecialchars($row['esc'], ENT_QUOTES, 'UTF-8') ?>
-                    <?= htmlspecialchars($row['piso'], ENT_QUOTES, 'UTF-8') ?>º<?= htmlspecialchars($row['puerta'], ENT_QUOTES, 'UTF-8') ?>, 
-                    <?= htmlspecialchars($row['provincia'], ENT_QUOTES, 'UTF-8') ?>,
-                    <?= htmlspecialchars($row['localidad'], ENT_QUOTES, 'UTF-8') ?>,
-                    <?= htmlspecialchars($row['cod_postal'], ENT_QUOTES, 'UTF-8') ?>
-                </p>
+                <!--
+                    <p>
+                        Dirección: 
+                        <?= htmlspecialchars($row['Tipo_via'], ENT_QUOTES, 'UTF-8') ?>
+                        <?= htmlspecialchars($row['Nombre_via'], ENT_QUOTES, 'UTF-8') ?>
+                        <?= htmlspecialchars($row['Nro'], ENT_QUOTES, 'UTF-8') ?>,
+                        escalera <?= htmlspecialchars($row['esc'], ENT_QUOTES, 'UTF-8') ?>
+                        <?= htmlspecialchars($row['piso'], ENT_QUOTES, 'UTF-8') ?>º<?= htmlspecialchars($row['puerta'], ENT_QUOTES, 'UTF-8') ?>, 
+                        <?= htmlspecialchars($row['provincia'], ENT_QUOTES, 'UTF-8') ?>,
+                        <?= htmlspecialchars($row['localidad'], ENT_QUOTES, 'UTF-8') ?>,
+                        <?= htmlspecialchars($row['cod_postal'], ENT_QUOTES, 'UTF-8') ?>
+                    </p>
+                -->
             </div>
             <div>
                 <a href="#"><button class="btn-add-product">✎</button></a>

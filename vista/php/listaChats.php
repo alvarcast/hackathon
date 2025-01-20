@@ -9,86 +9,118 @@
 </head>
 <body>
 
-  <?php
-    include "../../common/php/connect.php";
+<?php
+  include "../../common/php/connect.php";
 
-    if (isset($_SESSION['id'])){
+  if (isset($_SESSION['id'])){
 
-      $whereClause = "id_usuario_solicita = " . $_SESSION['id'] . " OR id_usuario_pub = " . $_SESSION['id'];
-      $chatCount = 1;
-  
-      $sql = "SELECT id,
-      id_publicacion
-      FROM chats
-      WHERE " . $whereClause;
-  
-      $mysqliresult = $conn->query($sql);
-      $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+    $whereClause = "id_usuario_solicita = " . $_SESSION['id'] . " OR id_usuario_pub = " . $_SESSION['id'];
+    $chatCount = 1;
 
-    } else {
-      header("Location: login.php");
+    $sql = "SELECT c.id, i.nombre
+    FROM chats c
+    INNER JOIN publicaciones p ON c.id_publicacion = p.id
+    INNER JOIN items i ON p.id_item = i.id
+    WHERE " . $whereClause ."
+    ORDER BY c.fecha ASC";
+
+    $mysqliresult = $conn->query($sql);
+    
+    if (!$mysqliresult) {
+      die("Query failed: " . $conn->error);
     }
 
-  ?>
+    $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
 
-  <header>
-    <div class="top-bar">
-      <img src="../img/logo.png" alt="Cirso Logo" class="logo">
-      <input type="text" class="search-bar" placeholder="Buscar chat...">
-      <div class="icons">
-        <a href="usuario.php"><img src="../img/user.png"></a>
-        <a href="../html/soporte.html"><img src="../img/support.png"></a>
-        <a href="categorias.php"><img src="../img/caja.png"></a>
-      </div>
+    $sql2 = "SELECT usuario,
+    c.id,
+    m.fecha,
+    texto,
+    nombre
+    FROM mensajes m
+    INNER JOIN chats c ON c.id = m.id_chat
+    INNER JOIN publicaciones p ON p.id = c.id_publicacion
+    INNER JOIN items i ON i.id = p.id_item
+    INNER JOIN usuarios u ON u.id = m.id_usuario
+    WHERE id_usu_rec = " . ($_SESSION['id']) . "
+    ORDER BY fecha DESC
+    LIMIT 3";
+
+    $mysqliresult2 = $conn->query($sql2);
+
+    if (!$mysqliresult2) {
+      die("Query failed: " . $conn->error);
+    }
+
+    $results2 = $mysqliresult2->fetch_all(MYSQLI_ASSOC);
+
+  } else {
+    header("Location: login.php");
+  }
+
+  $conn->close();
+
+?>
+
+<header>
+  <div class="top-bar">
+    <img src="../img/logo.png" alt="Cirso Logo" class="logo">
+    <input type="text" class="search-bar" placeholder="Buscar chat...">
+    <div class="icons">
+      <a href="usuario.php"><img src="../img/user.png"></a>
+      <a href="../html/soporte.html"><img src="../img/support.png"></a>
+      <a href="categorias.php"><img src="../img/caja.png"></a>
     </div>
-  </header>
-
-  <div class="container">
-    <div class="mensajes">
-      <h4>Mensajes</h4>
-      <div class="mensaje">
-        <!-- No puedo establecer el nombre del usuario sin estar asignado un mensaje a este -->
-        <h4>NOMBRE_CONTACTO</h4>
-        <p>mensaje mas reciente </p>
-      </div>
-    </div>
-    
-<!-- Por hacer estilo de los chats -->
-    <main class="messages-section">
-      <div class="message-box">
-        <h2><a href="#">Tus mensajes</a></h2>
-      </div>
-
-      <div class="no-messages">
-        <?php
-          if($mysqliresult->num_rows == 0){
-            echo "<i class='message-envelope'>✉️</i>";
-            echo "<p>NO TIENES NINGÚN MENSAJE</p>";
-            echo "<p>Cuando alguien te envíe algún mensaje aparecerá aquí</p>";
-          }
-        ?>
-
-        <?php foreach ($results as $item):?>
-
-          <h3>Chat <?= htmlspecialchars($chatCount, ENT_QUOTES, 'UTF-8') ?></h3>
-          <p>ID Chat: <?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?></p>
-          <p>ID Publicación del chat: <?= htmlspecialchars($item['id_publicacion'], ENT_QUOTES, 'UTF-8') ?></p>
-
-          <a href="chat.php?cid=<?php echo $item['id']; ?>">Abrir</a>
-
-          <?php $chatCount = $chatCount + 1 ?>
-
-        <?php endforeach; ?>
-      </div>
-    </main>
   </div>
-  
-  
-  <footer>
-    <a href="#politicas-privacidad">Políticas privacidad</a>
-    <a href="#politicas-cookies">Políticas de cookies</a>
-    <a href="#configuracion-cookies">Configuración de cookies</a>
-    <a href="#terminos">Términos y condiciones</a>
+</header>
+
+<div class="container">
+  <!-- Sección de mensajes recientes -->
+  <div class="mensajes">
+    <h4>Mensajes recientes</h4>
+    <?php foreach ($results2 as $item2): ?>
+      <div class="mensaje">
+        <h4><?= htmlspecialchars($item2['usuario'], ENT_QUOTES, 'UTF-8') ?>, <?= htmlspecialchars($item2['nombre'], ENT_QUOTES, 'UTF-8') ?></h4>
+        <p><?= htmlspecialchars($item2['texto'], ENT_QUOTES, 'UTF-8') ?></p>
+        <p><?= htmlspecialchars($item2['fecha'], ENT_QUOTES, 'UTF-8') ?></p>
+        <p><a href="chat.php?cid=<?= $item2['id'] ?>">Abrir</a></p>
+      </div>
+    <?php endforeach; ?>
+  </div>
+
+  <!-- Sección principal de los chats -->
+  <main class="messages-section">
+    <div class="message-box">
+      <h2><a href="#">Tus chats</a></h2>
+    </div>
+
+    <div class="no-messages">
+      <?php if ($mysqliresult->num_rows == 0): ?>
+        <i class="message-envelope">✉️</i>
+        <p>NO TIENES NINGÚN MENSAJE</p>
+        <p>Cuando alguien te envíe algún mensaje aparecerá aquí</p>
+      <?php else: ?>
+        <?php foreach ($results as $item): ?>
+          <div class="msg">
+            <h3>Chat <?= htmlspecialchars($chatCount, ENT_QUOTES, 'UTF-8') ?></h3>
+            <p>ID Chat: <?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?></p>
+            <p>Publicación: <?= htmlspecialchars($item['nombre'], ENT_QUOTES, 'UTF-8') ?></p>
+            <a href="chat.php?cid=<?= $item['id'] ?>">Abrir</a>
+          </div>
+          <?php $chatCount++; ?>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+  </main>
+</div>
+
+
+<footer>
+  <a href="#politicas-privacidad">Políticas privacidad</a>
+  <a href="#politicas-cookies">Políticas de cookies</a>
+  <a href="#configuracion-cookies">Configuración de cookies</a>
+  <a href="#terminos">Términos y condiciones</a>
 </footer>
+
 </body>
 </html>

@@ -143,22 +143,26 @@ h1 {
 }
 
 .editarBtn {
-    background-color: #5BA4C7;
+    background-color: #2f6a85;
     color: white;
     font-family: 'Mulish';
+    height: 3em;
+    width: 6em;
 }
 
 .eliminarBtn {
     background-color: red;
     color: white;
     font-family: 'Mulish';
+    height: 3em;
+    width: 6em;
 }
 
 /* Botón para añadir un producto */
 .btn-add-product {
     height: 2em;
     width: 2em;
-    background-color: #5BA4C7;
+    background-color: #2f6a85;
     color: white;
     border: none;
     font-size: larger;

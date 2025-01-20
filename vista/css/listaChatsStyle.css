@@ -1,193 +1,210 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'mulish';
-  }
-  @font-face {
-    font-family: 'patrick';
-    src: url('../fuentes/PatrickHandSC-Regular.ttf');
-
-    
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'mulish';
 }
 
-  @font-face {
-    font-family: 'Mulish';
-    src: url("../fuentes/Mulish-VariableFont_wght.ttf" );
+@font-face {
+  font-family: 'patrick';
+  src: url('../fuentes/PatrickHandSC-Regular.ttf');
+
 
 }
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #fff6e7;
-  }
-  
-  .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #2f6a85;
-    padding: 15px;
-    height: 6.9em;
-  }
 
-  .logo {
-    height: 100px;
-  }
-  
-  .search-bar {
-    flex-grow: 1;
-    max-width: 500px;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    margin: 0 20px;
-  }
+@font-face {
+  font-family: 'Mulish';
+  src: url("../fuentes/Mulish-VariableFont_wght.ttf");
+
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff6e7;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2f6a85;
+  padding: 15px;
+  height: 6.9em;
+}
+
+.logo {
+  height: 100px;
+}
+
+.search-bar {
+  flex-grow: 1;
+  max-width: 500px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  margin: 0 20px;
+}
+
 .search-bar input {
-    font-family: 'patrick';
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
+  font-family: 'patrick';
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
 }
-  .icons a {
-    text-decoration: none;
+
+.icons a {
+  text-decoration: none;
 }
+
 .icons {
-    
-    display: flex;
-    gap: 10px;
+
+  display: flex;
+  gap: 10px;
 }
+
 .icons img {
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
 }
 
-  .notification-dot {
-    color: red;
-    font-size: 0.8em;
-    vertical-align: super;
-  }
-  
-  .categories {
-    display: flex;
-    justify-content: center;
-    background-color: #e4f3f7;
-    padding: 10px 0;
-    gap: 15px;
-    font-size: 0.9em;
-  }
-  
-  .categories a {
-    color: #333;
-    text-decoration: none;
-    padding: 5px 10px;
-  }
-  
-  .categories a:hover {
-    background-color: #a5c9cf;
-    border-radius: 5px;
-  }
-  
-  .messages-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    text-align: center;
-    margin-left: 18%;
-  }
-  
-  .message-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #d3d3c7;
-    padding: 10px 20px;
-    border-radius: 8px;
-  }
-  
-  .message-box a {
-    margin: 0;
-    text-decoration: none;
-    color: #000;
-  }
-  
-  .edit-icon {
-    font-size: 1.2em;
-    cursor: pointer;
-  }
-  
-  .no-messages {
-    margin-top: 20px;
-    color: #333;
-  }
-  
-  .message-envelope {
-    font-size: 3em;
-    margin-bottom: 10px;
-  }
-  
-  .no-messages p {
-    margin: 5px 0;
-  }
-  .container {
-    display: flex; /* Para alinear filtros y productos lado a lado */
-    flex-direction: row; /* Horizontalmente */
-    height: calc(100vh - 80px); /* Resta el espacio de la barra superior */
-    overflow: hidden;
+.notification-dot {
+  color: red;
+  font-size: 0.8em;
+  vertical-align: super;
 }
 
-  .mensajes{
-  
-    width: 25%;
-    background-color: #e7f4fc;
-    padding: 20px;
-    border-right: 2px solid #d3d3d3;
-    box-sizing: border-box;
-    overflow-y: auto; /* Scroll para contenido largo */
-    
-  }
-
-  .mensajes h4{
-    padding-top: 5%;
-    padding-bottom: 8%;
-  }
-
-  .mensaje{
-    background-color: white;
-    color: #2f6a85;
-    width: 98%;
-    margin-left: 1%;
-    padding-bottom: 10%;
-    border-radius: 8%;
-  }
-
-  .mensaje h4{
-    margin-left: 5%;
-    padding-top: 5%;
-    color: #2f6a85;
-  }
-
-  .mensaje p{
-    margin-left: 10%;
-    padding-top: 0.5%;
-    color: #333;
-  }
-
-  footer {
-    background-color: #C7C7C7;
-    padding: 10px;
-    text-align: center;
-    font-size: 14px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.categories {
+  display: flex;
+  justify-content: center;
+  background-color: #e4f3f7;
+  padding: 10px 0;
+  gap: 15px;
+  font-size: 0.9em;
 }
+
+.categories a {
+  color: #333;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.categories a:hover {
+  background-color: #a5c9cf;
+  border-radius: 5px;
+}
+
+.message-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #d3d3c7;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.message-box a {
+  margin: 0;
+  text-decoration: none;
+  color: #000;
+}
+
+.edit-icon {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.no-messages {
+  margin-top: 20px;
+  color: #333;
+}
+
+.msg {
+  margin-bottom: 1em;
+}
+
+.message-envelope {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.no-messages p {
+  margin: 5px 0;
+}
+
+.container {
+  display: flex;
+  /* Mantiene los elementos alineados lado a lado */
+  height: calc(100vh - 80px);
+  /* Ajusta la altura total, menos la barra superior */
+  overflow: hidden;
+}
+
+.mensajes {
+  width: 25%;
+  /* Mantén un ancho fijo */
+  background-color: #e7f4fc;
+  padding: 20px;
+  border-right: 2px solid #d3d3d3;
+  box-sizing: border-box;
+  overflow-y: auto;
+  /* Desplazamiento si el contenido es demasiado largo */
+}
+
+.messages-section {
+  flex-grow: 1;
+  /* Permite que este contenedor ocupe el resto del espacio */
+  display: flex;
+  flex-direction: column;
+  /* Alinea el contenido de forma vertical */
+  justify-content: flex-start;
+  /* Asegura que los mensajes inicien desde arriba */
+  overflow-y: auto;
+  /* Permite desplazamiento para los mensajes */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.mensajes h4 {
+  padding-top: 5%;
+  padding-bottom: 8%;
+}
+
+.mensaje {
+  margin-bottom: 1em;
+  background-color: white;
+  color: #2f6a85;
+  width: 98%;
+  margin-left: 1%;
+  padding-bottom: 10%;
+  border-radius: 8%;
+}
+
+.mensaje h4 {
+  margin-left: 5%;
+  padding-top: 5%;
+  color: #2f6a85;
+}
+
+.mensaje p {
+  margin-left: 10%;
+  padding-top: 0.5%;
+  color: #333;
+}
+
+footer {
+  background-color: #C7C7C7;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 footer a {
-    color: black;
-    text-decoration: none;
-    margin: 0 15px;
+  color: black;
+  text-decoration: none;
+  margin: 0 15px;
 }
-
-  

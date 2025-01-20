@@ -29,7 +29,7 @@
         } else {
             header("Location: login.php");
         }
-
+        
     ?>
 
     <!-- Barra superior -->

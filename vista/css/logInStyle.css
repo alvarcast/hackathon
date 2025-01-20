@@ -72,9 +72,10 @@ header {
 }
 
 .login-section button {
-    background-color: #316a84;
+    background-color: #2f6a85;
     color: white;
-    border: none;
+    border: solid 1px;
+    border-color: #000000;
     border-radius: 5px;
     padding: 10px;
     width: 50%;

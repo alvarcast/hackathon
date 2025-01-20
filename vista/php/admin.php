@@ -15,7 +15,8 @@
     if (isset($_SESSION['id'])){
         $id = $_SESSION['id'];
 
-        $sql = "SELECT id_tipo FROM usuarios
+        $sql = "SELECT id_tipo 
+        FROM usuarios
         WHERE id = $id";
 
         $result = $conn->query($sql);
@@ -25,7 +26,9 @@
             header("Location: ../../common/php/disconnect.php");
         }
 
-        $sqlU = "SELECT usuario, email, estatus FROM usuarios
+        $sqlU = "SELECT id, usuario, email, estatus 
+        FROM usuarios
+        WHERE id != $id
         ORDER BY id ASC";
     
         $mysqliresult = $conn->query($sqlU);
@@ -98,7 +101,7 @@
                             <td><?= htmlspecialchars($item['estatus'], ENT_QUOTES, 'UTF-8') ?></td>
                             <td>
                                 <form action="../../modelo/php/admin/userActions.php?controlUsr=1&usuario=<?php echo $item['usuario']; ?>" method="post">
-                                    <button class="button chat" type="submit">Abrir chat</button>
+                                    <button class="button chat" type="submit">Contactar</button>
                                 </form>
                                 <?php
                                     if($item['estatus'] == "SUSPENDIDO"){
