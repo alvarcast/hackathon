@@ -36,6 +36,8 @@
 
             $oid = $row['id_usuario'];
 
+            $self = ($_SESSION['id'] == $oid);
+
         } else {
             header("Location: login.php");
         }
@@ -89,11 +91,17 @@
 
         <aside class="product-summary">
             <h3>Resumen del producto</h3>
-            <form method="GET" action="../../controlador/php/openChat.php">
-                <input type="hidden" name="oid" value="<?= $oid ?>">
-                <input type="hidden" name="pid" value="<?= $pid ?>">
-                <button class="btn">Solicitar</button>
-            </form>
+            <?php if (!$self): ?>
+                <form method="GET" action="../../controlador/php/openChat.php">
+                    <input type="hidden" name="oid" value="<?= htmlspecialchars($oid, ENT_QUOTES, 'UTF-8') ?>">
+                    <input type="hidden" name="pid" value="<?= htmlspecialchars($pid, ENT_QUOTES, 'UTF-8') ?>">
+                    <button class="btn">Solicitar</button>
+                </form>
+            <?php else: ?>
+                <form method="GET" action="../../controlador/php/editChat.php">
+                    <button class="btn">Editar publicación</button>
+                </form>
+            <?php endif; ?>
         </aside>   
     </main>
     <footer>
