@@ -41,7 +41,6 @@
         } else {
             header("Location: login.php");
         }
-
     ?>
 
     <header class="header">
@@ -58,18 +57,6 @@
             <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes"></a>
         </nav>
     </header>
-
-    <nav class="category-nav">
-        <a href="#">Camisetas</a>
-        <a href="#">Jerséis/sudaderas</a>
-        <a href="#">Pantalones</a>
-        <a href="#">Calzado</a>
-        <a href="#">Abrigos/Chaquetas</a>
-        <a href="#">Accesorios</a>
-        <a href="#">Juguetes</a>
-        <a href="#">Mobiliario</a>
-        <a href="#">Otros</a>
-    </nav>
 
     <main class="main-container">
         <section class="product-list">
@@ -98,18 +85,18 @@
                     <button class="btn">Solicitar</button>
                 </form>
             <?php else: ?>
-                <form method="GET" action="../../controlador/php/editChat.php">
-                    <button class="btn">Editar publicación</button>
+                <form method="post" action="../../controlador/php/deletePost.php" onsubmit="return confirm('¿Seguro que quieres borrar esta publicación?')">
+                    <input type="hidden" name="pid" value="<?= htmlspecialchars($pid, ENT_QUOTES, 'UTF-8') ?>">
+                    <button class="btn" style="background-color: red; color: white;">Borrar publicación</button>
                 </form>
             <?php endif; ?>
         </aside>   
     </main>
     <footer>
-        <a href="#politicas-privacidad">Políticas privacidad</a>
-        <a href="#politicas-cookies">Políticas de cookies</a>
-        <a href="#configuracion-cookies">Configuración de cookies</a>
-        <a href="#terminos">Términos y condiciones</a>
-        <a href="#centro-asistencia">Centro de asistencia</a>
-    </footer>
+        <a href="../html/politicasPrivacidad.html">Políticas privacidad</a>
+        <a href="../html/politicasCookies.html">Políticas de cookies</a>
+        <a href="../html/avisoLegal.html">Aviso Legal</a>
+        <a href="../html/soporte.html">Centro de asistencia</a>
+    </footer>
 </body>
 </html>

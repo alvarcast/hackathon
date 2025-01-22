@@ -39,9 +39,9 @@
         INNER JOIN usuarios u ON u.id = p.id_usuario
         ORDER BY 
         CASE p.control
-            WHEN 'pendiente' THEN 1
-            WHEN 'rechazado' THEN 2
-            WHEN 'aprobado' THEN 3
+            WHEN 'PENDIENTE' THEN 1
+            WHEN 'RECHAZADO' THEN 2
+            WHEN 'APROBADO' THEN 3
         END ASC";
     
         $mysqliresult = $conn->query($sqlP);
@@ -72,6 +72,7 @@
         <a href="#manage-users">Administrar Usiarios</a>
         <a href="#manage-publications">Administrar Publicaciones</a>
         <a href="#manage-chats">Administrar Chats</a>
+        <a href="../../modelo/php/admin/insertUserAdmin.php">Crear usuario</a>
     </nav>
 
     <div class=barra>
@@ -101,20 +102,20 @@
                             <td><?= htmlspecialchars($item['estatus'], ENT_QUOTES, 'UTF-8') ?></td>
                             <td>
                                 <form action="../../modelo/php/admin/userActions.php?controlUsr=1&usuario=<?php echo $item['usuario']; ?>" method="post">
-                                    <button class="button chat" type="submit">Contactar</button>
+                                    <button class="button chat" type="submit">Ver info</button>
                                 </form>
                                 <?php
                                     if($item['estatus'] == "SUSPENDIDO"){
                                         echo
                                         "
-                                            <form action='../../modelo/php/admin/userActions.php?controlUsr=3&usuario=" . $item['usuario'] . "' method='post' onsubmit=\"return confirm('Seguro que quieres desbanear a este usuario?');\">
+                                            <form action='../../modelo/php/admin/userActions.php?controlUsr=3&usuario=" . $item['usuario'] . "' method='post' onsubmit=\"return confirm('¿Seguro que quieres desbanear a este usuario?');\">
                                                 <button class='button allow' type='submit'>Desbanear</button>
                                             </form>
                                         ";
                                     } else {
                                         echo
                                         "
-                                            <form action='../../modelo/php/admin/userActions.php?controlUsr=2&usuario=" . $item['usuario'] . "' method='post' onsubmit=\"return confirm('Seguro que quieres banear a este usuario?');\">
+                                            <form action='../../modelo/php/admin/userActions.php?controlUsr=2&usuario=" . $item['usuario'] . "' method='post' onsubmit=\"return confirm('¿Seguro que quieres banear a este usuario?');\">
                                                 <button class='button ban' type='submit'>Banear</button>
                                             </form>
                                         ";
@@ -146,10 +147,10 @@
                             <td><?= htmlspecialchars($item['control'], ENT_QUOTES, 'UTF-8') ?></td>
                             <td>
                                 <?php
-                                    if($item['control'] == "pendiente"){
+                                    if($item['control'] == "PENDIENTE"){
                                         echo
                                         "
-                                            <form action='../../modelo/php/admin/publicationActions.php?controlPub=1&pid=" . $item['pid'] . "' method='post' onsubmit=\"return confirm('Seguro que quieres permitir esta donación?');\">
+                                            <form action='../../modelo/php/admin/publicationActions.php?controlPub=1&pid=" . $item['pid'] . "' method='post' onsubmit=\"return confirm('¿Seguro que quieres permitir esta donación?');\">
                                                 <button class='button allow' type='submit'>Permitir</button>
                                             </form>
                                         ";
@@ -159,23 +160,23 @@
                                                 <button class='button deny' type='submit'>Denegar</button>
                                             </form>
                                         ";
-                                    } else if ($item['control'] == "rechazado") {
+                                    } else if ($item['control'] == "RECHAZADO") {
                                         echo
                                         "
-                                            <form action='../../modelo/php/admin/publicationActions.php?controlPub=1&pid=" . $item['pid'] . "' method='post' onsubmit=\"return confirm('Seguro que quieres permitir esta donación?');\">
+                                            <form action='../../modelo/php/admin/publicationActions.php?controlPub=1&pid=" . $item['pid'] . "' method='post' onsubmit=\"return confirm('¿Seguro que quieres permitir esta donación?');\">
                                                 <button class='button allow' type='submit'>Permitir</button>
                                             </form>
                                         ";
-                                    } else if ($item['control'] == "aprobado") {
+                                    } else if ($item['control'] == "APROBADO") {
                                         echo
                                         "
-                                            <form action='../../modelo/php/admin/publicationActions.php?controlPub=2&pid=" . $item['pid'] . "' method='post' onsubmit=\"return confirm('Seguro que quieres retirar esta donación?');\">
+                                            <form action='../../modelo/php/admin/publicationActions.php?controlPub=2&pid=" . $item['pid'] . "' method='post' onsubmit=\"return confirm('¿Seguro que quieres retirar esta donación?');\">
                                                 <button class='button deny' type='submit'>Retirar</button>
                                             </form>
                                         ";
                                     }
                                 ?>
-                                <form action="../../modelo/php/admin/publicationActions.php?controlPub=3&pid=<?php echo $item['pid']; ?>" method="post" onsubmit="return confirm('Seguro que quieres borrar esta publicación?')">
+                                <form action="../../modelo/php/admin/publicationActions.php?controlPub=3&pid=<?php echo $item['pid']; ?>" method="post" onsubmit="return confirm('¿Seguro que quieres borrar esta publicación?')">
                                     <button class="button delete" type="submit">Borrar</button>
                                 </form>
                             </td>
@@ -206,7 +207,7 @@
                                 <form action="../../modelo/php/admin/chatActions.php?controlChat=1&cid=<?php echo $item['cid']; ?>" method="post">
                                     <button class="button chat" type="submit">Ver Chat</button>
                                 </form>
-                                <form action="../../modelo/php/admin/chatActions.php?controlChat=2&cid=<?php echo $item['cid']; ?>" method="post" onsubmit="return confirm('Seguro que quieres borrar este chat?')">
+                                <form action="../../modelo/php/admin/chatActions.php?controlChat=2&cid=<?php echo $item['cid']; ?>" method="post" onsubmit="return confirm('¿Seguro que quieres borrar este chat?')">
                                     <button class="button delete" type="submit">Borrar chat</button>
                                 </form>
                             </td>

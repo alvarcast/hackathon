@@ -1,3 +1,80 @@
+<?php
+include "../../common/php/connect.php"; // Conexión a la base de datos
+
+// Verificar que el usuario esté logueado
+if (!isset($_SESSION['id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Procesar eliminación del producto (solo de la tabla publicaciones)
+if (isset($_POST['product_id'])) {
+    $product_id = (int)$_POST['product_id']; // Asegúrate de que el ID del producto sea un número entero
+
+    // Eliminar solo de la tabla publicaciones
+    try {
+        // Usamos MySQLi para la eliminación
+        $sql = "DELETE FROM publicaciones WHERE id = ? AND id_usuario = ?";
+        $stmt = $conn->prepare($sql);
+        
+        // Verificamos si la preparación fue exitosa
+        if ($stmt === false) {
+            throw new Exception("Error en la preparación de la consulta: " . $conn->error);
+        }
+
+        // Enlazamos los parámetros
+        $stmt->bind_param("ii", $product_id, $_SESSION['id']);
+        
+        // Ejecutamos la consulta
+        $stmt->execute();
+
+        // Verificamos si la ejecución fue exitosa
+        if ($stmt->affected_rows > 0) {
+            // Redirigir al perfil de usuario después de la eliminación
+            header("Location: usuario.php");
+            exit();
+        } else {
+            throw new Exception("No se pudo eliminar el producto o el producto no existe.");
+        }
+
+    } catch (Exception $e) {
+        echo "Error al eliminar el producto: " . $e->getMessage();
+    }
+}
+
+// Obtener la información del usuario
+$sql = "SELECT u.id,
+            u.usuario,
+            u.telefono,
+            u.email,
+            d.Tipo_via,
+            d.Nombre_via,
+            d.Nro,
+            d.piso,
+            d.esc,
+            d.puerta,
+            d.cod_postal,
+            d.localidad,
+            d.provincia
+        FROM usuarios u
+        INNER JOIN direcciones d ON u.id_dir = d.id
+        WHERE u.id = ".$_SESSION['id'];
+
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+// Obtener los productos del usuario
+$sql = "SELECT p.descripcion,
+            i.nombre,
+            p.id AS product_id
+        FROM publicaciones p
+        INNER JOIN items i ON p.id_item = i.id
+        WHERE p.id_usuario = ". $_SESSION['id'];
+
+$mysqliresult = $conn->query($sql);
+$results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,46 +85,6 @@
     <link rel="icon" href="../img/logo.png">
 </head>
 <body>
-
-    <?php
-        include "../../common/php/connect.php";
-
-        if (isset($_SESSION['id'])){
-            
-            $sql = "SELECT u.id,
-            usuario,
-            telefono,
-            email,
-            Tipo_via,
-            Nombre_via,
-            Nro,
-            piso,
-            esc,
-            puerta,
-            cod_postal,
-            localidad,
-            provincia
-            FROM usuarios u
-            INNER JOIN direcciones d ON u.id_dir = d.id
-            WHERE u.id = ".$_SESSION['id'];
-    
-            $result = $conn->query($sql);
-            $row = $result->fetch_assoc();
-    
-            $sql = "SELECT descripcion,
-            nombre
-            FROM publicaciones p
-            INNER JOIN items i ON p.id_item = i.id
-            WHERE id_usuario = ". $_SESSION['id'];
-    
-            $mysqliresult = $conn->query($sql);
-            $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
-
-        } else {
-            header("Location: login.php");
-        }
-    
-    ?>
 
     <header class="top-bar">
         <div class="logo">
@@ -70,22 +107,9 @@
                 <h2>Información personal</h2>
                 <p>Teléfono: <?= htmlspecialchars($row['telefono'], ENT_QUOTES, 'UTF-8') ?></p>
                 <p>E-Mail: <?= htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') ?></p>
-                <!--
-                    <p>
-                        Dirección: 
-                        <?= htmlspecialchars($row['Tipo_via'], ENT_QUOTES, 'UTF-8') ?>
-                        <?= htmlspecialchars($row['Nombre_via'], ENT_QUOTES, 'UTF-8') ?>
-                        <?= htmlspecialchars($row['Nro'], ENT_QUOTES, 'UTF-8') ?>,
-                        escalera <?= htmlspecialchars($row['esc'], ENT_QUOTES, 'UTF-8') ?>
-                        <?= htmlspecialchars($row['piso'], ENT_QUOTES, 'UTF-8') ?>º<?= htmlspecialchars($row['puerta'], ENT_QUOTES, 'UTF-8') ?>, 
-                        <?= htmlspecialchars($row['provincia'], ENT_QUOTES, 'UTF-8') ?>,
-                        <?= htmlspecialchars($row['localidad'], ENT_QUOTES, 'UTF-8') ?>,
-                        <?= htmlspecialchars($row['cod_postal'], ENT_QUOTES, 'UTF-8') ?>
-                    </p>
-                -->
             </div>
             <div>
-                <a href="#"><button class="btn-add-product">✎</button></a>
+                <a href="editUser.php"><button class="btn-add-product">✎</button></a>
             </div>
         </div>
 
@@ -93,10 +117,9 @@
             <div>
                 <h2>Añada un producto</h2>
                 <a href="../html/soporte.html" class="linkNormas"><p>Normas de uso</p></a>
-                <!--Link de las normas-->
             </div>
             <div>
-                <a href="../addArticulo/addArticulo.html"><button class="btn-add-product">+</button></a>
+                <a href="addProduct.php"><button class="btn-add-product">+</button></a>
             </div>
         </div>
 
@@ -115,8 +138,11 @@
                         </div>
                     </div>
                     <div class="product-actions">
-                        <button class="editarBtn">Editar</button>
-                        <button class="eliminarBtn">Eliminar</button>
+                        <!-- Formulario de eliminación -->
+                        <form method="POST" action="" onsubmit="return confirm('¿Seguro que quieres borrar esta publicación?')">
+                            <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
+                            <button type="submit" class="eliminarBtn">Eliminar</button>
+                        </form>
                     </div>
                 </div>
 
@@ -126,12 +152,11 @@
     </div><br><br>
 
     <footer>
-        <a href="#politicas-privacidad">Políticas privacidad</a>
-        <a href="#politicas-cookies">Políticas de cookies</a>
-        <a href="#configuracion-cookies">Configuración de cookies</a>
-        <a href="#terminos">Términos y condiciones</a>
+        <a href="../html/politicasPrivacidad.html">Políticas privacidad</a>
+        <a href="../html/politicasCookies.html">Políticas de cookies</a>
+        <a href="../html/avisoLegal.html">Aviso Legal</a>
+        <a href="../html/soporte.html">Centro de asistencia</a>
     </footer>
 
 </body>
 </html>
-

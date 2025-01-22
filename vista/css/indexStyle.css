@@ -127,7 +127,6 @@ header {
 /* Estilos para las preguntas y el fondo */
 .slide .question {
     font-family: 'mulish';
-    height: 400px;
     width: 35%;
     display: flex;
     align-items: center;

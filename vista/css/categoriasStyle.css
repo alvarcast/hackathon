@@ -37,17 +37,37 @@ header {
   .search-bar {
     flex-grow: 1;
     max-width: 500px;
-    padding: 8px;
-    border: none;
-    border-radius: 25px;
     margin: 0 20px;
-  }
-.search-bar input {
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center; /* Align input and button horizontally */
+    gap: 10px; /* Space between the text input and the button */
+}
+
+.search-bar input[type="text"] {
     font-family: 'patrick';
     width: 100%;
-    padding: 8px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.search-bar input[type="submit"] {
+    padding: 8px 16px;
     border: none;
     border-radius: 5px;
+    background-color: #1d4455;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar input[type="submit"]:hover {
+    background-color: #1f4e64; /* Slightly darker color on hover */
 }
 .icons a {
     text-decoration: none;
@@ -124,11 +144,12 @@ header {
 .products {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Siempre tres columnas */
-    gap: 20px; /* Espacio entre columnas y filas */
+    grid-template-columns: repeat(3, 1fr); /* Always three columns */
+    gap: 20px; /* Space between columns and rows */
     padding: 20px;
     background-color: #f8f4e8;
     box-sizing: border-box;
+    align-items: start; /* Align products to the top */
 }
 
 .product {
@@ -138,6 +159,10 @@ header {
     border-radius: 8px;
     padding: 10px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Ensure content doesn't stretch */
+    flex-direction: column; /* Align content vertically */
+    justify-content: space-between; /* Push content to top and bottom */
+    height: auto; /* Reset any default height */
 }
 
 .product img{

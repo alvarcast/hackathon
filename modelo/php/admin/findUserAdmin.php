@@ -13,14 +13,11 @@ WHERE usuario LIKE '%".$usuario."%'";
 $mysqliresult = $conn->query($sql);
 $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
 
-$conn->close();
-
 ?>
 
 <link rel="stylesheet" href="../../../vista/css/adminStyle.css">
 
 <header>
-    <img src="../../../vista/img/Logo_en_babyblue__3___1_-removebg-preview (1).png" alt="Admin Logo">
     <h1>Panel de Administrador</h1>
 </header>
 

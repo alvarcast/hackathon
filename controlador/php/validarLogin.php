@@ -7,7 +7,7 @@ $contrasenia = $_POST['contrasenia'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $sql = "SELECT id, estatus, id_tipo FROM usuarios WHERE usuario = '".$usuario."'";
+    $sql = "SELECT id, estatus, id_tipo, lopdgdd FROM usuarios WHERE usuario = '".$usuario."'";
     $result = $conn->query($sql);
 
     $row = $result->fetch_assoc();
@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $estatus = $row['estatus'];
     $id_tipo = $row['id_tipo'];
+    $lopdgdd = $row['lopdgdd'];
 
     if($result->num_rows == 1){
 
@@ -24,7 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($estatus == "INACTIVO"){
                 $sql = "UPDATE usuarios SET estatus = 'ACTIVO' WHERE id = ". $_SESSION['id'];
-                $result = $conn->query($sql);
+                $conn->query($sql);
+            }
+
+            if ($lopdgdd == 0){
+                $sql = "UPDATE usuarios SET lopdgdd = 1 WHERE id = ". $_SESSION['id'];
+                $conn->query($sql);
             }
 
             $sql = "SELECT id FROM usuarios WHERE password = '".$contrasenia."' AND id = ". $_SESSION['id'];

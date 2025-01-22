@@ -17,7 +17,7 @@
         if(isset($_GET["control"])) { 
             $userControl = $_GET['control'];
             if($userControl != null){
-                echo"<br><br>";
+                echo"<br>";
                 if($userControl == 2){
                     echo"<h1 style='text-align: center'>El usuario indicado no existe</h1>";
                 }else if($userControl == 3){
@@ -26,11 +26,7 @@
                     echo"<h1 style='text-align: center'>Su usuario ha sido deshabilitado, póngase en contacto con el soporte</h1>";
                 }
             }
-        } else {
-            echo"<br><br>";
         }
-
-        
     ?>
 
     <main>
@@ -46,14 +42,17 @@
                 
                 <a href="../html/soporte.html" class="forgot-password">Olvidé mi contraseña</a>
             </form>
+            <br>
+            <p>Al iniciar sesión por primera vez, aceptas nuestra <a href="../html/politicasPrivacidad.html">política de privacidad</a></p>
         </section>
     </main>
 
     <footer>
-        <a href="#politicas-privacidad">Políticas privacidad</a>
-        <a href="#politicas-cookies">Políticas de cookies</a>
-        <a href="#terminos">Términos y condiciones</a>
-    </footer>
+        <a href="../html/politicasPrivacidad.html">Políticas privacidad</a>
+        <a href="../html/politicasCookies.html">Políticas de cookies</a>
+        <a href="../html/avisoLegal.html">Aviso Legal</a>
+        <a href="../html/soporte.html">Centro de asistencia</a>
+    </footer>
 
 </body>
 </html>

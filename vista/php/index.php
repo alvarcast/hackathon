@@ -6,6 +6,7 @@
     <title>Cirso - Landing Page</title>
     <link rel="stylesheet" href="../css/indexStyle.css">
     <link rel="icon" href="../img/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -123,23 +124,64 @@
         </div>
     -->
 
+    <!--Cookies-->
     <div class="info">
         <div class="info-logos">
-            <img src="../img/cmadrid.png" alt="Logo Comunidad de Madrid" />
-            <img src="../img/uax_logo_nuevo_0.png" alt="Logo UAX" />
-            <img src="../img/asnef.png" alt="Logo ASNEF" />
-            <img src="../img/seur.png" alt="Logo SEUR" />
+            <a href="https://www.comunidad.madrid/"><img src="../img/cmadrid.png" alt="Logo Comunidad de Madrid" /></a>
+            <a href="https://www.uax.com/"><img src="../img/uax_logo_nuevo_0.png" alt="Logo UAX" /></a>
+            <a href="https://www.asnef.com/"><img src="../img/asnef.png" alt="Logo ASNEF" /></a>
+            <a href="https://www.seur.com/es/index.html"><img src="../img/seur.png" alt="Logo SEUR" /></a>
         </div>
     </div>
 
+    <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookieModalLabel">Uso de Cookies</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Utilizamos cookies para mejorar la experiencia del usuario. Puedes elegir qué cookies permitir.</p>
+                    <form id="cookiePreferencesForm">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="essentialCookies" disabled checked>
+                            <label class="form-check-label" for="essentialCookies">Cookies esenciales (obligatorias)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="analyticsCookies">
+                            <label class="form-check-label" for="analyticsCookies">Cookies de rendimiento</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="marketingCookies">
+                            <label class="form-check-label" for="marketingCookies">Cookies de funcionalidad</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="marketingCookies">
+                            <label class="form-check-label" for="marketingCookies">Cookies dirigidas</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="acceptAllCookies">Aceptar todas</button>
+                    <button type="button" class="btn btn-primary" id="savePreferences">Guardar preferencias</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
     <!-- Pie de página -->
     <footer>
-        <a href="#politicas-privacidad">Políticas privacidad</a>
-        <a href="#politicas-cookies">Políticas de cookies</a>
-        <a href="#configuracion-cookies">Configuración de cookies</a>
-        <a href="#terminos">Aviso Legal</a>
-        <a href="#centro-asistencia">Centro de asistencia</a>
+        <a href="../html/politicasPrivacidad.html">Políticas privacidad</a>
+        <a href="../html/politicasCookies.html">Políticas de cookies</a>
+        <a href="../html/avisoLegal.html">Aviso Legal</a>
+        <a href="../html/soporte.html">Centro de asistencia</a>
     </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/cookies.js"></script>
 
     <script src="../js/carousel.js"></script>
 </body>

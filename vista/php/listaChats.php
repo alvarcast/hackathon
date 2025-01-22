@@ -14,6 +14,15 @@
 
   if (isset($_SESSION['id'])){
 
+    $id = $_SESSION['id'];
+
+    $sqlc = "SELECT id_tipo 
+    FROM usuarios
+    WHERE id = $id";
+
+    $resultc = $conn->query($sqlc);
+    $rowc = $resultc->fetch_assoc();
+
     $whereClause = "id_usuario_solicita = " . $_SESSION['id'] . " OR id_usuario_pub = " . $_SESSION['id'];
     $chatCount = 1;
 
@@ -68,7 +77,11 @@
     <input type="text" class="search-bar" placeholder="Buscar chat...">
     <div class="icons">
       <a href="usuario.php"><img src="../img/user.png"></a>
-      <a href="../html/soporte.html"><img src="../img/support.png"></a>
+      <?php if ($rowc['id_tipo'] == 1): ?>
+        <a href="admin.php"><img src="../img/admin.png" alt="admin"></a>
+      <?php else: ?>
+        <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
+      <?php endif; ?>
       <a href="categorias.php"><img src="../img/caja.png"></a>
     </div>
   </div>
@@ -115,12 +128,12 @@
 </div>
 
 
-<footer>
-  <a href="#politicas-privacidad">Políticas privacidad</a>
-  <a href="#politicas-cookies">Políticas de cookies</a>
-  <a href="#configuracion-cookies">Configuración de cookies</a>
-  <a href="#terminos">Términos y condiciones</a>
-</footer>
+    <footer>
+      <a href="../html/politicasPrivacidad.html">Políticas privacidad</a>
+      <a href="../html/politicasCookies.html">Políticas de cookies</a>
+      <a href="../html/avisoLegal.html">Aviso Legal</a>
+      <a href="../html/soporte.html">Centro de asistencia</a>
+    </footer>
 
 </body>
 </html>
