@@ -42,7 +42,8 @@
             WHEN 'PENDIENTE' THEN 1
             WHEN 'RECHAZADO' THEN 2
             WHEN 'APROBADO' THEN 3
-        END ASC";
+        END ASC, 
+        p.id ASC";
     
         $mysqliresult = $conn->query($sqlP);
         $resultsP = $mysqliresult->fetch_all(MYSQLI_ASSOC);
@@ -146,6 +147,7 @@
                             <td><?= htmlspecialchars($item['usuario'], ENT_QUOTES, 'UTF-8') ?></td>
                             <td><?= htmlspecialchars($item['control'], ENT_QUOTES, 'UTF-8') ?></td>
                             <td>
+                                <a  href="producto.php?pid=<?php echo $item['pid']; ?>"><button class='button chat' type='submit'>Ver</button></a>
                                 <?php
                                     if($item['control'] == "PENDIENTE"){
                                         echo

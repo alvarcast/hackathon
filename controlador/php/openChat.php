@@ -17,9 +17,6 @@ if (isset($_SESSION['id'])) {
 
         $stmt = $conn->prepare($sqlc);
 
-        // Bind the parameters to the query
-        $stmt->bind_param("iii", $pid, $_SESSION['id'], $_SESSION['id']);
-
         $stmt->execute();
         $result = $stmt->get_result();
 

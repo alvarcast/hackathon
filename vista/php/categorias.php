@@ -13,6 +13,16 @@
 include "../../common/php/connect.php";
 
 if (isset($_SESSION['id'])) {
+
+    $id = $_SESSION['id'];
+
+    $sqlc = "SELECT id_tipo 
+    FROM usuarios
+    WHERE id = $id";
+
+    $resultc = $conn->query($sqlc);
+    $rowc = $resultc->fetch_assoc();
+    
     $countPublicaciones = 1;
 
     // Si hay resultados de búsqueda en la sesión, usarlos
@@ -64,7 +74,11 @@ if (isset($_SESSION['id'])) {
         </div>
         <div class="icons">
             <a href="usuario.php"><img src="../img/user.png" alt="perfil"></a>
-            <a href="../html/soporte.html"><img src="../img/support.png" alt="ayuda"></a>
+            <?php if ($rowc['id_tipo'] == 1): ?>
+                <a href="admin.php"><img src="../img/admin.png" alt="admin"></a>
+            <?php else: ?>
+                <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
+            <?php endif; ?>
             <a href="listaChats.php"><img src="../img/mesages.png" alt="mensajes"></a>
         </div>
     </header>

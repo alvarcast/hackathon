@@ -1,6 +1,15 @@
 <?php
 include "../../common/php/connect.php"; // Conexión a la base de datos
 
+$id = $_SESSION['id'];
+
+$sqlc = "SELECT id_tipo 
+FROM usuarios
+WHERE id = $id";
+
+$resultc = $conn->query($sqlc);
+$rowc = $resultc->fetch_assoc();
+
 // Verificar que el usuario esté logueado
 if (!isset($_SESSION['id'])) {
     header("Location: login.php");
@@ -94,7 +103,11 @@ $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
         <div class="icons">
             <!-- Iconos alineados a la derecha -->
             <a href="../../common/php/disconnect.php"><img src= "../img/logoff.png" alt="logoff"></a>
-            <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
+            <?php if ($rowc['id_tipo'] == 1): ?>
+                <a href="admin.php"><img src="../img/admin.png" alt="admin"></a>
+            <?php else: ?>
+                <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
+            <?php endif; ?>
             <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes"></a>
             <a href="categorias.php"><img src="../img/caja.png"></a>
         </div>

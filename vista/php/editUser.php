@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Usuario</title>
     <link rel="stylesheet" href="../css/editUserStyle.css">
+    <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 <body>
     <header class="top-bar">

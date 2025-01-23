@@ -8,7 +8,7 @@ $sql = "SELECT usuario,
 email,
 estatus
 FROM usuarios
-WHERE usuario LIKE '%".$usuario."%'";
+WHERE usuario LIKE '%".$usuario."%' OR email LIKE '%".$usuario."%';";
 
 $mysqliresult = $conn->query($sql);
 $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);

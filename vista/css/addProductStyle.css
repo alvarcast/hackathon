@@ -75,7 +75,7 @@ form {
 }
 
 form input, form select, form button {
-    width: 100%;
+    width: 95%;
     padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
@@ -121,15 +121,10 @@ footer {
     bottom: 0;
     width: 100%;
 }
-
-footer nav a {
+footer a {
     color: black;
     text-decoration: none;
     margin: 0 15px;
-}
-
-footer nav a:hover {
-    color: #F5EED6;
 }
 
 /* Responsividad */

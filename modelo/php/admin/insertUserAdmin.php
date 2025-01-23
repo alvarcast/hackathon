@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="../../../vista/css/adminStyle.css">
+    <link rel="icon" href="../../../vista/img/logo.png" type="image/x-icon">
 </head>
-
-<link rel="stylesheet" href="../../../vista/css/adminStyle.css">
 
 <?php
 
@@ -31,87 +31,115 @@ if ($rowc['id_tipo'] != 1){
 
 ?>
 
-<header>
-    <h1>Formulario de Registro de nuevo usuario</h1>
-</header>
+<body>
+    <header>
+        <h1>Formulario de Registro de nuevo usuario</h1>
+    </header>
 
-<nav>
-    <a href="../../../vista/php/admin.php">Volver</a>
-</nav>
+    <nav>
+        <a href="../../../vista/php/admin.php">Volver</a>
+    </nav>
 
-<body style="text-align: center">
-    <h1>Formulario de Registro de nuevo usuario</h1>
-    <form action="../../../controlador/php/procesar_formulario.php" method="post" style="margin-bottom: 2em">
-        <h2>Datos del Usuario</h2>
+    <div class="container">
+        <form action="../../../controlador/php/procesar_formulario.php" method="post" class="formulario">
+            <h2>Datos del Usuario</h2>
+            
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required><br>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" name="telefono" required>
+            </div>
 
-        <label for="telefono">Teléfono:</label>
-        <input type="text" id="telefono" name="telefono" required><br>
+            <div class="form-group">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required><br>
+            <h2>Datos de la Dirección</h2>
 
-        <h2>Datos de la Dirección</h2>
-        <label for="tipo_via">Tipo de Vía:</label>
-        <select id="tipo_via" name="tipo_via" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="Calle">Calle</option>
-            <option value="Avenida">Avenida</option>
-            <option value="Carretera">Carretera</option>
-            <option value="Plaza">Plaza</option>
-        </select>
-        <br>
+            <div class="form-group">
+                <label for="tipo_via">Tipo de Vía:</label>
+                <select id="tipo_via" name="tipo_via" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Calle">Calle</option>
+                    <option value="Avenida">Avenida</option>
+                    <option value="Carretera">Carretera</option>
+                    <option value="Plaza">Plaza</option>
+                </select>
+            </div>
 
-        <label for="nombre_via">Nombre de la Vía:</label>
-        <input type="text" id="nombre_via" name="nombre_via" required><br>
+            <div class="form-group">
+                <label for="nombre_via">Nombre de la Vía:</label>
+                <input type="text" id="nombre_via" name="nombre_via" required>
+            </div>
 
-        <label for="tipo">Tipo:</label>
-        <select id="tipo" name="tipo">
-            <option value="Piso">Piso</option>
-            <option value="Chalet">Chalet</option>
-        </select><br>
+            <div class="form-group">
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="tipo">
+                    <option value="Piso">Piso</option>
+                    <option value="Chalet">Chalet</option>
+                </select>
+            </div>
 
-        <label for="nro">Número:</label>
-        <input type="number" id="nro" name="nro" required><br>
+            <div class="form-group">
+                <label for="nro">Número:</label>
+                <input type="number" id="nro" name="nro" required>
+            </div>
 
-        <label for="piso">Piso:</label>
-        <input type="text" id="piso" name="piso"><br>
+            <div class="form-group">
+                <label for="piso">Piso:</label>
+                <input type="text" id="piso" name="piso">
+            </div>
 
-        <label for="esc">Escalera:</label>
-        <input type="text" id="esc" name="esc"><br>
+            <div class="form-group">
+                <label for="esc">Escalera:</label>
+                <input type="text" id="esc" name="esc">
+            </div>
 
-        <label for="puerta">Puerta:</label>
-        <input type="text" id="puerta" name="puerta"><br>
+            <div class="form-group">
+                <label for="puerta">Puerta:</label>
+                <input type="text" id="puerta" name="puerta">
+            </div>
 
-        <label for="cod_postal">Código Postal:</label>
-        <input type="text" id="cod_postal" name="cod_postal" required><br>
+            <div class="form-group">
+                <label for="cod_postal">Código Postal:</label>
+                <input type="text" id="cod_postal" name="cod_postal" required>
+            </div>
 
-        <label for="localidad">Localidad:</label>
-        <input type="text" id="localidad" name="localidad" required><br>
+            <div class="form-group">
+                <label for="localidad">Localidad:</label>
+                <input type="text" id="localidad" name="localidad" required>
+            </div>
 
-        <label for="provincia">Provincia:</label>
-        <input type="text" id="provincia" name="provincia" required><br>
+            <div class="form-group">
+                <label for="provincia">Provincia:</label>
+                <input type="text" id="provincia" name="provincia" required>
+            </div>
 
-        <h2>Datos Adicionales</h2>
-        <label for="tipo_usuario">Tipo de Usuario:</label>
-        <select id="tipo_usuario" name="tipo_usuario" required>
-            <option value="1">Administrador</option>
-            <option value="2">Coordinador</option>
-            <option value="3">Usuario</option>
-        </select><br>
+            <h2>Datos Adicionales</h2>
 
-        <label for="entidad">Nombre de la Entidad:</label>
-        <select id="entidad" name="entidad" required>
-            <option value="1">COMUNIDAD DE MADRID</option>
-        </select><br>
+            <div class="form-group">
+                <label for="tipo_usuario">Tipo de Usuario:</label>
+                <select id="tipo_usuario" name="tipo_usuario" required>
+                    <option value="1">Administrador</option>
+                    <option value="2">Coordinador</option>
+                    <option value="3">Usuario</option>
+                </select>
+            </div>
 
-        <br>
+            <div class="form-group">
+                <label for="entidad">Nombre de la Entidad:</label>
+                <select id="entidad" name="entidad" required>
+                    <option value="1">COMUNIDAD DE MADRID</option>
+                </select>
+            </div>
 
-        <button type="submit">Enviar</button>
-
-        <br>
-    </form>
+            <button type="submit" class="button allow">Enviar</button>
+        </form>
+    </div>
 </body>
 </html>
