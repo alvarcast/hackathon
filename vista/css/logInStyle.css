@@ -30,7 +30,22 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 6.9em;
+    height: 6.5em;
+}
+
+.icons a {
+    text-decoration: none;
+}
+.icons {
+    
+    display: flex;
+    gap: 10px;
+    
+}
+.icons img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
 }
 
 .logo {

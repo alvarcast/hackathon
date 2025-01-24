@@ -166,32 +166,95 @@ body {
   box-sizing: border-box;
 }
 
+.no-messages {
+  width: 100%; 
+  text-align: center;
+  color: #333;
+  font-family: 'Mulish';
+}
+
+.message-envelope {
+  font-size: 4em;
+  color: #2f6a85;
+  margin-bottom: 10px;
+}
+
+.no-messages p {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.msg {
+  width: 100%;
+  background-color: #e7f4fc;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Mulish';
+}
+
+.msg h3 {
+  font-size: 1.2em;
+  color: #2f6a85;
+  margin-bottom: 5px;
+}
+
+.msg p {
+  font-size: 1em;
+  color: #333;
+  margin: 5px 0;
+}
+
+.msg a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background-color: #2f6a85;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.msg a:hover {
+  background-color: #3f819e;
+}
+
 .mensajes h4 {
-  padding-top: 5%;
-  padding-bottom: 8%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #2f6a85;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .mensaje {
-  margin-bottom: 1em;
-  background-color: white;
-  color: #2f6a85;
-  width: 98%;
-  margin-left: 1%;
-  padding-bottom: 10%;
-  border-radius: 8%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mensaje:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .mensaje h4 {
-  margin-left: 5%;
-  padding-top: 5%;
+  font-size: 1.2em;
   color: #2f6a85;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 .mensaje p {
-  margin-left: 10%;
-  padding-top: 0.5%;
-  color: #333;
+  font-size: 0.9em;
+  color: #555;
+  margin: 5px 0;
 }
+
 
 footer {
   background-color: #C7C7C7;

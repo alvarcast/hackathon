@@ -9,25 +9,26 @@ body {
 @font-face {
     font-family: 'patrick';
     src: url('../fuentes/PatrickHandSC-Regular.ttf');
-
-    
 }
 
-  @font-face {
+@font-face {
     font-family: 'Mulish';
-    src: url("../fuentes/Mulish-VariableFont_wght.ttf" );
-
+    src: url("../fuentes/Mulish-VariableFont_wght.ttf");
 }
+
 /* Header */
 header {
     background-color: #2f6a85;
     padding: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Centrar elementos horizontalmente */
     height: 5em;
+    position: relative; /* Hacer espacio para los íconos y logo */
 }
 .logo {
+    position: absolute;
+    left: 15px; /* Mantén el logo en la esquina izquierda */
     display: flex;
     align-items: center;
 }
@@ -35,14 +36,15 @@ header {
     height: 100px;
     margin-right: 10px;
 }
-.titulo{
+.titulo {
     color: #ffffff;
     font-family: 'mulish';
 }
 .search-bar {
-    flex-grow: 1;
-    margin: 0 20px;
+    flex-grow: 1; /* Permite que la barra se ajuste al espacio */
+    max-width: 500px; /* Controla el tamaño máximo */
     display: flex;
+    justify-content: center;
 }
 .search-bar input {
     font-family: 'patrick';
@@ -51,13 +53,14 @@ header {
     border: none;
     border-radius: 5px;
 }
-.icons a {
-    text-decoration: none;
-}
 .icons {
-    
+    position: absolute;
+    right: 15px; /* Mantén los íconos en la esquina derecha */
     display: flex;
     gap: 10px;
+}
+.icons a {
+    text-decoration: none;
 }
 .icons img {
     width: 35px;
@@ -102,7 +105,6 @@ header {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
-   
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -163,6 +165,7 @@ header {
 .product-summary .btn:hover {
     background-color: #a5d3e7;
 }
+
 /* Pie de página */
 footer {
     background-color: #C7C7C7;

@@ -19,6 +19,7 @@ body {
     align-items: center;
     background-color: #2f6a85; /* Color de fondo */
     padding: 10px 20px;
+    height: 5em;
 }
 
 .logo {
@@ -53,7 +54,9 @@ body {
 }
 
 .icons a img {
-    height: 30px; /* Tamaño uniforme de los iconos */
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
 }
 
 

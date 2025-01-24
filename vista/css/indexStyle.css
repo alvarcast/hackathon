@@ -26,7 +26,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 5em;
+    height: 6.9em;
 }
 .logo {
     display: flex;
@@ -324,18 +324,17 @@ h3 {
     border-top: 1px solid #ddd; /* Línea superior */
 }
 
-
-/* Estilo para los logos de los patrocinadores */
 .info-logos {
     display: flex;
     justify-content: center;
-    gap: 80px; /* Espacio entre logos */
-    flex-wrap: wrap; /* Permitir que los logos se ajusten en varias filas */
+    gap: 40px; /* Espacio entre logos */
+    flex-wrap: nowrap; /* Evita que los logos se muevan a nuevas filas */
+    align-items: center; /* Centra verticalmente los logos */
 }
 
 .info-logos img {
-    width: 210px; /* Tamaño de los logos */
-    height: 100px;
+    max-width: 120px; /* Tamaño máximo de ancho */
+    height: auto; /* Mantiene la proporción original */
     transition: transform 0.3s ease; /* Efecto de escala al pasar el cursor */
 }
 

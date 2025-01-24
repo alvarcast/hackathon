@@ -26,7 +26,8 @@
     $whereClause = "id_usuario_solicita = " . $_SESSION['id'] . " OR id_usuario_pub = " . $_SESSION['id'];
     $chatCount = 1;
 
-    $sql = "SELECT c.id, i.nombre
+    $sql = "SELECT c.id, 
+    i.nombre
     FROM chats c
     INNER JOIN publicaciones p ON c.id_publicacion = p.id
     INNER JOIN items i ON p.id_item = i.id
@@ -56,6 +57,11 @@
     LIMIT 3";
 
     $mysqliresult2 = $conn->query($sql2);
+    $rowx = $mysqliresult2->fetch_assoc();
+
+    if ($rowx != null) {
+      $ousr = $rowx['usuario'];
+    }
 
     if (!$mysqliresult2) {
       die("Query failed: " . $conn->error);
@@ -104,7 +110,7 @@
   <!-- Sección principal de los chats -->
   <main class="messages-section">
     <div class="message-box">
-      <h2><a href="#">Tus chats</a></h2>
+      <h2>Tus chats</h2>
     </div>
 
     <div class="no-messages">
@@ -116,7 +122,7 @@
         <?php foreach ($results as $item): ?>
           <div class="msg">
             <h3>Chat <?= htmlspecialchars($chatCount, ENT_QUOTES, 'UTF-8') ?></h3>
-            <p>ID Chat: <?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?></p>
+            <p>Conversación con: <?= htmlspecialchars($ousr, ENT_QUOTES, 'UTF-8') ?></p>
             <p>Publicación: <?= htmlspecialchars($item['nombre'], ENT_QUOTES, 'UTF-8') ?></p>
             <a href="chat.php?cid=<?= $item['id'] ?>">Abrir</a>
           </div>

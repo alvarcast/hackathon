@@ -15,16 +15,17 @@
         <div class="logo">
             <img src="../img/logo.png" alt="Logo" id="logo">
         </div>
-        <h1 class="nombreUsuario">Editar</h1>
         <div class="icons">
             <!-- Iconos alineados a la derecha -->
             <a href="usuario.php"><img src= "../img/user.png" alt="logoff"></a>
             <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
             <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes"></a>
             <a href="categorias.php"><img src="../img/caja.png"></a>
+            <a href="javascript:history.back()"><img src= "../img/back_arrow.png" alt="Volver"></a>
         </div>
     </header>
   <form method="POST" action="addProduct.php" enctype="multipart/form-data">
+    <h1 style="text-align: center;">Añadir Artículo</h1>
     Nombre: <input type="text" name="nombre" required><br>
     Descripción: <input type="text" name="descripcion" required><br>
     Edad: 

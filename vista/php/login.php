@@ -11,6 +11,9 @@
 
     <header>
         <a href="index.php"><img src="../img/logo.png" alt="Logo Cirso" class="logo"></a>
+        <div class="icons">
+            <a href="javascript:history.back()"><img src= "../img/back_arrow.png" alt="Volver"></a>
+        </div>
     </header>
 
     <?php

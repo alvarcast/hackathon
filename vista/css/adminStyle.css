@@ -25,18 +25,18 @@ body {
 }
 
 header {
-    background-color: var(--main-color);
-    padding: 15px;
-    text-align: center;
-    color: var(--white-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 5em;
+    background-color: var(--main-color);
+    color: var(--white-color);
+    padding: 15px;
+    height: auto;
 }
 
 header img {
-    height: 100px;
+    height: 50px;
+    margin-right: 15px;
 }
 
 nav {
@@ -98,32 +98,58 @@ h2 {
     color: var(--main-color);
 }
 
+/* Estilo general de la tabla */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate; /* Para bordes redondeados */
+    border-spacing: 0; /* Elimina espacios entre celdas */
     margin-top: 15px;
-    background-color: beige;
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que los bordes redondeados afecten todo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agrega sombra */
 }
 
-table th, table td {
-    border: 1px solid var(--main-color);
-    padding: 10px;
-    text-align: center;
-}
-
+/* Estilo para encabezado */
 table th {
-    background-color: var(--main-color);
-    color: var(--white-color);
+    background-color: #34657f; /* Color del encabezado */
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
 }
 
+/* Estilo para celdas */
+table td {
+    background-color: #f9f9f9;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* Hover en las filas */
+table tbody tr:hover {
+    background-color: #e3f2fd; /* Color claro al hacer hover */
+}
+
+/* Alternancia de colores */
+table tr:nth-child(even) td {
+    background-color: #e8f0f4;
+}
+
+/* Botones */
 .button {
-    padding: 8px 12px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px; 
-    color: var(--white-color);
+    display: inline-block;
+    text-align: center;
+    padding: 8px 0; /* Ajuste vertical */
+    width: 100px; /* Misma anchura */
+    margin: 5px 0;
+    border: none; /* Sin bordes */
+    border-radius: 20px; /* Bordes redondeados */
+    font-size: 14px;
     cursor: pointer;
-    width: 7em;
+    color: #ffffff;
+    text-transform: uppercase;
 }
 
 .ban, .delete {

@@ -18,7 +18,7 @@ body {
 
 }
 /* Top Bar Styles */
-header {
+   header {
     background-color: #2f6a85;
     padding: 15px;
     display: flex;
@@ -38,6 +38,20 @@ header {
     flex-grow: 1;
     max-width: 500px;
     margin: 0 20px;
+}
+
+.submit-btn{
+    background-color: #2f6a85;
+    color: white;
+    border: solid 1px;
+    border-color: #000000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 20%;
+    margin-top: 10%;
+    width: 50%;
+    font-size: 1em;
+    cursor: pointer;
 }
 
 .search-bar form {

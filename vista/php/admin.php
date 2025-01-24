@@ -66,11 +66,12 @@
 
 <body>
     <header>
+        <img src="../img/admin.png" alt="admin" style="height: 50px; margin-right: 10px;">
         <h1>Panel de Administrador</h1>
     </header>
     <nav>
         <a href="categorias.php">Inicio</a>
-        <a href="#manage-users">Administrar Usiarios</a>
+        <a href="#manage-users">Administrar Usuarios</a>
         <a href="#manage-publications">Administrar Publicaciones</a>
         <a href="#manage-chats">Administrar Chats</a>
         <a href="../../modelo/php/admin/insertUserAdmin.php">Crear usuario</a>
@@ -85,7 +86,7 @@
 
     <div class="container">
         <div id="manage-users" class="section">
-            <h2>Administrar Usiarios</h2>
+            <h2>Administrar Usuarios</h2>
             <table>
                 <thead>
                     <tr>
@@ -210,7 +211,7 @@
                                     <button class="button chat" type="submit">Ver Chat</button>
                                 </form>
                                 <form action="../../modelo/php/admin/chatActions.php?controlChat=2&cid=<?php echo $item['cid']; ?>" method="post" onsubmit="return confirm('¿Seguro que quieres borrar este chat?')">
-                                    <button class="button delete" type="submit">Borrar chat</button>
+                                    <button class="button delete" type="submit">Borrar</button>
                                 </form>
                             </td>
                         </tr>

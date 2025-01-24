@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php endif; ?>
             <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes"></a>
             <a href="categorias.php"><img src="../img/caja.png"></a>
+            <a href="javascript:history.back()"><img src= "../img/back_arrow.png" alt="Volver"></a>
         </div>
     </header>
 
