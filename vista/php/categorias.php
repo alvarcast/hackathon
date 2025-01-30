@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cirso - Productos</title>
     <link rel="stylesheet" href="../css/categoriasStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 <body>
@@ -30,10 +31,10 @@ if (isset($_SESSION['id'])) {
         $results = $_SESSION['search_results'];
     } else {
         // Si no hay resultados de búsqueda, mostrar todos los productos
-        $sql = "SELECT p.id, nombre, id_imagenes
+        $sql = "SELECT p.id, nombre
                 FROM publicaciones p
                 INNER JOIN items i ON p.id_item = i.id
-                WHERE control = 'aprobado' AND estatus = 'publicado'";
+                WHERE control = 'APROBADO' AND estatus = 'PUBLICADO'";
 
         $mysqliresult = $conn->query($sql);
 
@@ -69,17 +70,17 @@ if (isset($_SESSION['id'])) {
         <div class="search-bar">
             <form method="post" action="../../controlador/php/buscadorItems.php">
                 <input type="text" name="search" placeholder="Buscar por producto, categoría..." id="search-input">
-                <input type="submit" value="Buscar">
+                <input type="submit" value="Buscar"><i class="fa-solid fa-magnifying-glass"></i>
             </form>
         </div>
         <div class="icons">
-            <a href="usuario.php"><img src="../img/user.png" alt="perfil"></a>
+            <a href="usuario.php"><img src="../img/user.png" alt="perfil" title="Perfil" ></a>
             <?php if ($rowc['id_tipo'] == 1): ?>
-                <a href="admin.php"><img src="../img/admin.png" alt="admin"></a>
+                <a href="admin.php"><img src="../img/admin.png" alt="admin" title="Administración"></a>
             <?php else: ?>
-                <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
+                <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda" title="Ayuda"></a>
             <?php endif; ?>
-            <a href="listaChats.php"><img src="../img/mesages.png" alt="mensajes"></a>
+            <a href="listaChats.php"><img src="../img/mesages.png" alt="mensajes" title="Mensajes"></a>
         </div>
     </header>
 
@@ -131,6 +132,18 @@ if (isset($_SESSION['id'])) {
         <!-- Productos -->
         <section class="products">
             <?php foreach ($results as $item): ?>
+                <?php
+                    $sqlimg = "SELECT url
+                                FROM fotos
+                                WHERE id_item = " . $item['id'] . "
+                                LIMIT 5";
+                    $mysqliresultimg = $conn->query($sqlimg);
+
+                    if ($mysqliresultimg) {
+                        $imglist = $mysqliresultimg->fetch_all();
+                    }
+                ?>
+
                 <div class="product">
                     <a href="producto.php?pid=<?php echo $item['id']; ?>">
                         <img src="../img/kids-playing-with-eco-toys-full-shot.jpg" alt="Producto <?= htmlspecialchars($countPublicaciones, ENT_QUOTES, 'UTF-8') ?>">

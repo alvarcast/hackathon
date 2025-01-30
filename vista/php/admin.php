@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 
@@ -66,6 +67,7 @@
 
 <body>
     <header>
+        <img src="../img/logo.png" alt="Logo de CIRSO" class="logo">
         <img src="../img/admin.png" alt="admin" style="height: 50px; margin-right: 10px;">
         <h1>Panel de Administrador</h1>
     </header>
@@ -80,7 +82,7 @@
     <div class=barra>
         <form action="../../modelo/php/admin/findUserAdmin.php" method="post">
             <input type="text" placeholder="Buscar usuario..." id="find" name="find">
-            <button type="submit">Buscar</button>
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i>Buscar</button>
         </form>
     </div>
 

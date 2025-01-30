@@ -39,6 +39,10 @@ header img {
     margin-right: 15px;
 }
 
+.logo{
+    height: 100px;
+}
+
 nav {
     display: flex;
     justify-content: center;

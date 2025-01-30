@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tus chats</title>
     <link rel="stylesheet" href="../css/chatStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 <body>
@@ -87,9 +88,10 @@
         </div>
         <div class="icons">
             <!-- Iconos alineados a la derecha -->
-            <a href="usuario.php"><img src="../img/user.png" alt="perfil"></a>
-            <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
-            <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes"></a>
+            <a href="listaChats.php"><img src= "../img/back_arrow.png" alt="Volver" title="Volver"></a>
+            <a href="usuario.php"><img src="../img/user.png" alt="perfil" title="Perfil"></a>
+            <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda" title="Ayuda"></a>
+            <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes" title="Mensajes"></a>
         </div>
     </header>
 
@@ -112,7 +114,7 @@
 
         <form class="chat-form" method="POST" action="">
             <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="2" required></textarea>
-            <button type="submit">Enviar</button>
+            <button type="submit"> <i class="fa-solid fa-paper-plane"></i>Subir</button>
         </form>
     </div>
 </body>

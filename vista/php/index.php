@@ -20,8 +20,8 @@
             <input type="text" placeholder="Buscar por producto, categoría...">
         </div>-->
         <div class="icons">
-            <span class="icon user-icon"><a href="../html/soporte.html"><img src="../img/support.png"></a></span>
-            <span class="icon help-icon"><a href="login.php"><img src="../img/user.png"></a></span>
+            <span class="icon user-icon"><a href="../html/soporte.html"><img src="../img/support.png" title="Ayuda"></a></span>
+            <span class="icon help-icon"><a href="login.php"><img src="../img/user.png" title="Perfil" ></a></span>
             <!--<img src="user-icon.png" alt="Usuario">
             <img src="question-icon.png" alt="Ayuda">-->
         </div>

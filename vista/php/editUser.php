@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Usuario</title>
     <link rel="stylesheet" href="../css/editUserStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="../img/logo.png" type="image/x-icon">
 </head>
 <body>
@@ -46,15 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <div class="icons">
             <!-- Iconos alineados a la derecha -->
-            <a href="../../common/php/disconnect.php"><img src= "../img/logoff.png" alt="logoff"></a>
+            <a href="usuario.php"><img src= "../img/back_arrow.png" alt="Volver" title="Volver"></a>
+            <a href="../../common/php/disconnect.php"><img src= "../img/logoff.png" alt="logoff" title="Cerrar sesión"></a>
             <?php if ($rowc['id_tipo'] == 1): ?>
-                <a href="admin.php"><img src="../img/admin.png" alt="admin"></a>
+                <a href="admin.php"><img src="../img/admin.png" alt="admin" title="Administración"></a>
             <?php else: ?>
-                <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
+                <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda" title="Ayuda"></a>
             <?php endif; ?>
-            <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes"></a>
-            <a href="categorias.php"><img src="../img/caja.png"></a>
-            <a href="javascript:history.back()"><img src= "../img/back_arrow.png" alt="Volver"></a>
+            <a href="listaChats.php"><img src= "../img/mesages.png" alt="mensajes" title="Mensajes"></a>
+            <a href="categorias.php"><img src="../img/caja.png" title="Productos"></a>
         </div>
     </header>
 
@@ -62,16 +63,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1>Modificar Usuario</h1>
         <form id="modificarUsuarioForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <div class="form-group">
-                <label for="nombre">Telefono</label>
+                <label for="nombre" placeholder="Introduzca aqui su nuevo telefono" >Telefono</label>
                 <input type="text" id="nombre" name="nombre" pattern="[0-9]{9}" required>
             </div>
 
             <div class="form-group">
-                <label for="email">Correo Electrónico</label>
+                <label for="email" placeholder="Introduzca aqui su nuevo correo">Correo Electrónico</label>
                 <input type="email" id="email" name="email" required>
             </div>
 
-            <button type="submit">Subir</button>
+            <button type="submit"> <i class="fa-solid fa-paper-plane"></i>     Subir</button>
 
             <div id="error-message" class="error"></div>
         </form>

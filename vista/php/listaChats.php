@@ -27,7 +27,9 @@
     $chatCount = 1;
 
     $sql = "SELECT c.id, 
-    i.nombre
+    i.nombre,
+    id_usuario_solicita,
+    id_usuario_pub
     FROM chats c
     INNER JOIN publicaciones p ON c.id_publicacion = p.id
     INNER JOIN items i ON p.id_item = i.id
@@ -41,6 +43,30 @@
     }
 
     $results = $mysqliresult->fetch_all(MYSQLI_ASSOC);
+
+    $sqlx = "SELECT id_usuario_solicita,
+    id_usuario_pub
+    FROM chats c
+    WHERE " . $whereClause ."";
+
+    $mysqliresultx = $conn->query($sqlx);
+
+    $rowx = $mysqliresultx->fetch_assoc();
+
+    if ($rowx['id_usuario_solicita'] == $_SESSION['id']) {
+      $ousr = $rowx['id_usuario_pub'];
+    } else {
+      $ousr = $rowx['id_usuario_solicita'];
+    }
+
+    $sqle = "SELECT usuario
+    FROM usuarios
+    WHERE id = $ousr";
+
+    $resulte = $conn->query($sqle);
+    $rowe = $resulte->fetch_assoc();
+
+    $ousr = $rowe['usuario'];
 
     $sql2 = "SELECT usuario,
     c.id,
@@ -57,11 +83,6 @@
     LIMIT 3";
 
     $mysqliresult2 = $conn->query($sql2);
-    $rowx = $mysqliresult2->fetch_assoc();
-
-    if ($rowx != null) {
-      $ousr = $rowx['usuario'];
-    }
 
     if (!$mysqliresult2) {
       die("Query failed: " . $conn->error);
@@ -82,13 +103,13 @@
     <img src="../img/logo.png" alt="Cirso Logo" class="logo">
     <input type="text" class="search-bar" placeholder="Buscar chat...">
     <div class="icons">
-      <a href="usuario.php"><img src="../img/user.png"></a>
+      <a href="usuario.php"><img src="../img/user.png" title="Perfil"></a>
       <?php if ($rowc['id_tipo'] == 1): ?>
-        <a href="admin.php"><img src="../img/admin.png" alt="admin"></a>
+        <a href="admin.php"><img src="../img/admin.png" alt="admin" title="Administración"></a>
       <?php else: ?>
-        <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda"></a>
+        <a href="../html/soporte.html"><img src= "../img/support.png" alt="ayuda" title="Ayuda"></a>
       <?php endif; ?>
-      <a href="categorias.php"><img src="../img/caja.png"></a>
+      <a href="categorias.php"><img src="../img/caja.png" title="Productos"></a>
     </div>
   </div>
 </header>
